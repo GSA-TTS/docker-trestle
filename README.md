@@ -1,13 +1,13 @@
 # TTS Dockerized Compliance Trestle
 
-This repository contains the source code for the `gsatts/trestle` Docker image and OSCAL models to be used by that image.
+This repository contains the source code for the `ghcr.io/gsa-tts/trestle` Docker image and OSCAL models to be used by that image.
 
 ## Updating the Docker image:
 
 1. Make required changes to the Dockerfile
-1. Build the image: `docker build -t gsatts/trestle .`
-1. Tag with a datestamp: `docker tag gsatts/trestle gsatts/trestle:YYYYMMDD`
-1. Push the new tag to Docker Hub: `docker push gsatts/trestle:YYYYMMDD`
+1. Build the image: `docker build -t ghcr.io/gsa-tts/trestle .`
+1. Tag with a datestamp: `docker tag ghcr.io/gsa-tts/trestle ghcr.io/gsa-tts/trestle:YYYYMMDD`
+1. Push the new tag to Docker Hub: `docker push ghcr.io/gsa-tts/trestle:YYYYMMDD`
 
 ## Templates:
 

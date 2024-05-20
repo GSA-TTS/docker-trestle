@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+set -e
+
+if [ "$1" = "" ]; then
+    echo "Usage: $0 PROFILE_NAME"
+    exit 1
+fi
+
+if [ ! -d profiles/$1 ]; then
+    copy-profile $1
+fi
+
+trestle author ssp-generate -p $1 -o control-statements

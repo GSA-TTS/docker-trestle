@@ -11,4 +11,4 @@ if [ ! -d "profiles/$1" ]; then
     copy-profile $1
 fi
 
-trestle author ssp-generate -p $1 -o control-statements
+trestle author ssp-generate -p "$1" -o control-statements

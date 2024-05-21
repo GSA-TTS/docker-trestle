@@ -7,7 +7,7 @@ if [ "$1" = "" ]; then
     exit 1
 fi
 
-if [ ! -d profiles/$1 ]; then
+if [ ! -d "profiles/$1" ]; then
     copy-profile $1
 fi
 

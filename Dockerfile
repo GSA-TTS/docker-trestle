@@ -6,7 +6,7 @@
 
 # Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
 
-ARG PYTHON_VERSION=3.9.16
+ARG PYTHON_VERSION=3.9.19
 FROM python:${PYTHON_VERSION}-slim as base
 
 # Prevents Python from writing pyc files.
@@ -43,7 +43,12 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # Switch to the non-privileged user to run the application.
 USER appuser
 
+COPY --chown=appuser:appuser --chmod=744 entrypoint.sh /app/entrypoint.sh
 COPY --chown=appuser:appuser templates /app/templates/
+COPY scripts /app/bin
+
+ENV PATH="/app/bin:${PATH}"
+ENTRYPOINT ["/app/entrypoint.sh"]
 
 # Run the application.
 CMD trestle version

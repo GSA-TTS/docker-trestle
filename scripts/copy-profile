@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+set -e
+
+if [ "$1" = "" ]; then
+    echo "Usage: $0 PROFILE_NAME"
+    exit 1
+fi
+
+trestle import -f "/app/templates/profiles/$1/profile.json" -o "$1"

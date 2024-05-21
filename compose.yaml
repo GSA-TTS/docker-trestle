@@ -12,7 +12,7 @@ services:
     build:
       context: .
     volumes:
-      - ./working_dir:/app/working_dir
+      - ./working_dir:/app/docs
       - ./templates:/app/templates
 
 # The commented out section below is an example of how to define a PostgreSQL

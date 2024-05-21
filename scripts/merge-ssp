@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+set -e
+
+if [ ! -f "system-security-plan.json" ]; then
+    echo "Usage: First, cd to the folder containing the base SSP json file. Then: $0"
+    exit 1
+fi
+
+trestle merge -e "system-security-plan.*"

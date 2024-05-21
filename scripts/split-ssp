@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+set -e
+
+if [ "$1" = "" ]; then
+    echo "Usage: $0 SSP_FILE_NAME"
+    exit 1
+fi
+
+trestle split -f "$1" -e "system-security-plan.metadata,system-security-plan.system-characteristics,system-security-plan.system-implementation"

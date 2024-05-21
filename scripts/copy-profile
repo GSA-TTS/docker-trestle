@@ -7,4 +7,4 @@ if [ "$1" = "" ]; then
     exit 1
 fi
 
-trestle import -f /app/templates/profiles/$1/profile.json -o $1
+trestle import -f "/app/templates/profiles/$1/profile.json" -o "$1"

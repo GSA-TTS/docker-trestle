@@ -19,5 +19,5 @@ fi
 trestle author ssp-assemble -o "$1" -m control-statements
 
 if [ -d "system-security-plans/$1" ]; then
-    split-ssp system-security-plans/$1/system-security-plan.json
+    split-ssp "system-security-plans/$1/system-security-plan.json"
 fi

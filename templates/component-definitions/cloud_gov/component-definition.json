@@ -1,0 +1,193 @@
+{
+  "component-definition": {
+    "uuid": "c0b0091e-dee0-4213-b1bd-d1480fcb3b00",
+    "metadata": {
+      "title": "Cloud.gov LATO component definition.",
+      "last-modified": "2024-05-29T22:33:54.968281+00:00",
+      "version": "0.0.1",
+      "oscal-version": "1.0.4",
+      "roles": [
+        {
+          "id": "provider",
+          "title": "Provider"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "ed1c8027-6b7c-439e-8aa8-355cf46d3244",
+          "type": "organization",
+          "name": "Cloud.gov",
+          "links": [
+            {
+              "href": "https://cloud.gov",
+              "rel": "website"
+            }
+          ]
+        }
+      ]
+    },
+    "components": [
+      {
+        "uuid": "feef8607-5d90-493e-b367-b27b79dcabf6",
+        "type": "service",
+        "title": "Cloud.gov",
+        "description": "The Cloud.gov Platform-as-a-Service",
+        "links": [
+          {
+            "href": "https://cloud.gov",
+            "rel": "reference"
+          }
+        ],
+        "protocols": [
+          {
+            "uuid": "0130b4ef-4561-4363-bab5-1e20b9888e49",
+            "name": "https",
+            "title": "Transport Layer Security",
+            "port-ranges": [
+              {
+                "start": 443,
+                "end": 443,
+                "transport": "TCP"
+              }
+            ]
+          }
+        ],
+        "props": [
+          {
+            "name": "Rule_Id",
+            "value": "egress_control_in_place",
+            "remarks": "rule_1"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Customer must ensure egress control is in place",
+            "remarks": "rule_1"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "field_level_encryption_at_rest",
+            "remarks": "rule_2"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Customer must further encrypt sensitive data at the field level",
+            "remarks": "rule_2"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "812617fa-8f40-4708-aa93-2c21df5b9699",
+            "source": "trestle://profiles/lato/profile.json",
+            "description": "SC family controls implemented by cloud.gov on behalf of resident applications",
+            "implemented-requirements": [
+              {
+                "uuid": "11bc932e-561d-4d85-9e6a-86e230c0e725",
+                "control-id": "sc-7",
+                "description": "",
+                "statements": [
+                  {
+                    "uuid": "fb721526-81e6-4cfd-8bb0-363018512a50",
+                    "statement-id": "sc-7_smt.a",
+                    "description": "Application owners are responsible for ensuring their application does not exchange traffic with systems outside its own boundary over unsanctioned or unmonitored interfaces.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "egress_control_in_place"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ],
+                    "responsible-roles": [
+                      {
+                        "role-id": "customer"
+                      }
+                    ]
+                  },
+                  {
+                    "uuid": "e9aadfed-281f-454f-a2bb-bf89c42bd5e6",
+                    "statement-id": "sc-7_smt.b",
+                    "description": "Application owners are responsible for ensuring their application does not exchange traffic with systems outside its own boundary over unsanctioned or unmonitored interfaces.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "egress_control_in_place"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ],
+                    "responsible-roles": [
+                      {
+                        "role-id": "customer"
+                      }
+                    ]
+                  },
+                  {
+                    "uuid": "78367d72-7be3-4830-bb12-de9cfa6ffcf4",
+                    "statement-id": "sc-7_smt.c",
+                    "description": "Application owners are responsible for ensuring their application does not exchange traffic with systems outside its own boundary over unsanctioned or unmonitored interfaces.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "egress_control_in_place"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ],
+                    "responsible-roles": [
+                      {
+                        "role-id": "customer"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "uuid": "0364b4ce-1d30-4d4c-8268-e020b7b01607",
+                "control-id": "sc-8.1",
+                "description": "Customer applications fully inherit this control from cloud.gov.",
+                "props": [
+                  {
+                    "name": "implementation-status",
+                    "value": "implemented"
+                  }
+                ]
+              },
+              {
+                "uuid": "032738f6-3cf2-4d44-b8d9-bf508343b1d8",
+                "control-id": "sc-28.1",
+                "description": "cloud.gov has built-in cryptographic mechanisms to prevent unauthorized disclosure and modification of data. Customers are responsible for further securing/encrypting any sensitive information in their customer applications, and for auditing the permissions their users have for managing their applications.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "field_level_encryption_at_rest"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ],
+                "responsible-roles": [
+                  {
+                    "role-id": "provider",
+                    "party-uuids": [
+                      "ed1c8027-6b7c-439e-8aa8-355cf46d3244"
+                    ]
+                  },
+                  {
+                    "role-id": "customer"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

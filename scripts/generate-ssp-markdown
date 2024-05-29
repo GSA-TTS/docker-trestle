@@ -1,14 +1,58 @@
 #! /usr/bin/env bash
 
+usage="
+$0: Generate control statement markdown for an SSP
+
+Usage:
+    $0 -h
+    $0 -p PROFILE_NAME [-c COMMA_SEP_COMPDEFS] [-s LEVERAGED_SSP] [-m MARKDOWN_DIR] [-f]
+
+Options:
+-h: show help and exit
+-p: Profile name to base the SSP on
+-c: Comma-separated list of ComponentDefinitions to include. Optional
+-s: SSP to leverage as local name or URL. Optional
+-m: Directory to put markdown files in. Defaults to control-statements
+-f: Force overwrite
+"
+
 set -e
 
-if [ "$1" = "" ]; then
-    echo "Usage: $0 PROFILE_NAME"
+declare -a optional_args
+markdown="control-statements"
+profile=""
+
+while getopts "hp:c:s:m:f" opt; do
+    case "$opt" in
+        p)
+            profile=${OPTARG}
+            ;;
+        c)
+            optional_args+=("-cd" ${OPTARG})
+            ;;
+        s)
+            optional_args+=("-ls" ${OPTARG})
+            ;;
+        m)
+            markdown=${OPTARG}
+            ;;
+        f)
+            optional_args+=("-fo")
+            ;;
+        h)
+            echo "$usage"
+            exit 0
+            ;;
+    esac
+done
+
+if [ "$profile" = "" ]; then
+    echo "$usage"
     exit 1
 fi
 
-if [ ! -d "profiles/$1" ]; then
-    copy-profile $1
+if [ ! -d "profiles/$profile" ]; then
+    copy-profile "$profile"
 fi
 
-trestle author ssp-generate -p "$1" -o control-statements
+trestle author ssp-generate -p "$profile" -o "$markdown" "${optional_args[@]}"

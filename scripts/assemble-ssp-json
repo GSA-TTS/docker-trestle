@@ -1,23 +1,63 @@
 #! /usr/bin/env bash
 
+usage="
+$0: Assemble markdown controls into an OSCAL JSON SSP
+
+Usage:
+    $0 -h
+    $0 -n SYSTEM_NAME [-c COMMA_SEP_COMPDEFS] [-m MARKDOWN_DIR] [-r]
+
+Options:
+-h: show help and exit
+-n: System Name
+-c: Comma-separated list of ComponentDefinitions to include. Optional
+-m: Directory containing markdown files. Defaults to control-statements
+-r: Regenerate UUIDs
+"
+
 set -e
 
-if [ "$1" = "" ]; then
-    echo "Usage: $0 SYSTEM_NAME"
+declare -a optional_args
+markdown="control-statements"
+system_name=""
+
+while getopts "hn:c:m:r" opt; do
+    case "$opt" in
+        n)
+            system_name=${OPTARG}
+            ;;
+        c)
+            optional_args+=("-cd" ${OPTARG})
+            ;;
+        m)
+            markdown=${OPTARG}
+            ;;
+        r)
+            optional_args+=("-r")
+            ;;
+        h)
+            echo "$usage"
+            exit 0
+            ;;
+    esac
+done
+
+if [ "$system_name" = "" ]; then
+    echo "$usage"
     exit 1
 fi
 
-if [ -d "system-security-plans/$1" ]; then
+if [ -d "system-security-plans/$system_name" ]; then
     cwd=`pwd`
-    cd "system-security-plans/$1"
+    cd "system-security-plans/$system_name"
     merge-ssp
     cd $cwd
 else
     echo "No existing SSP found, skipping the merge step"
 fi
 
-trestle author ssp-assemble -o "$1" -m control-statements
+trestle author ssp-assemble -o "$system_name" -m "$markdown" "${optional_args[@]}"
 
-if [ -d "system-security-plans/$1" ]; then
-    split-ssp "system-security-plans/$1/system-security-plan.json"
+if [ -d "system-security-plans/$system_name" ]; then
+    split-ssp "system-security-plans/$system_name/system-security-plan.json"
 fi

@@ -4,6 +4,14 @@ This repository contains the source code for the `ghcr.io/gsa-tts/trestle` Docke
 
 ## Image Use:
 
+### General workflow:
+
+1. [Create the files for a given SSPP](#create-control-statement-markdown-files)
+1. Edit control statements within markdown files
+1. [Assemble markdown contents into a provisional OSCAL SSP](#assemble-ssp-json-from-markdown)
+1. Edit other sections of the SSPP within the smaller json files
+1. [Assemble everything into a final OSCAL SSP (TODO: within a CI workflow)](#final-ssp-assembly)
+
 ### Pull down the trestle image and initialize a compliance trestle project
 
 Prerequisite: `$(pwd)/compliance` directory exists and is where you want to store all compliance artifacts
@@ -19,6 +27,18 @@ All other usage commands assume you are operating within the docker container.
 
 `generate-ssp-markdown PROFILE_NAME`
 
+If you are using a profile that isn't [shipped with the image](#templates) you must [import it first](#import-profile-into-working-space)
+
+### Assemble SSP JSON from Markdown
+
+`assemble-ssp-json SYSTEM_NAME`
+
+This step will create `system-security-plans/SYSTEM_NAME/system-security-plan.json` as well as smaller JSON files within `system-security-plans/SYSTEM_NAME/system-security-plan/` for editing.
+
+### Final SSP Assembly
+
+`trestle assemble -n SYSTEM_NAME system-security-plan`
+
 ### Import profile into working space:
 
 If you are using a `PROFILE_NAME` that does not ship with this docker container then you must first manually import it using:
@@ -26,6 +46,12 @@ If you are using a `PROFILE_NAME` that does not ship with this docker container 
 `trestle import -f PROFILE_URL -o PROFILE_NAME`
 
 Once that is done you can go back to the `generate-ssp-markdown` step
+
+### Split SSP into manageable files
+
+This step is automatically handled by the `assemble-ssp-json` script as long as that script is run from the trestle root.
+
+`split-ssp system-security-plans/SYSTEM_NAME/system-security-plan.json`
 
 ### Templates:
 

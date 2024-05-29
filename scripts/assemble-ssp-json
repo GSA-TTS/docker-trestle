@@ -1,0 +1,23 @@
+#! /usr/bin/env bash
+
+set -e
+
+if [ "$1" = "" ]; then
+    echo "Usage: $0 SYSTEM_NAME"
+    exit 1
+fi
+
+if [ -d "system-security-plans/$1" ]; then
+    cwd=`pwd`
+    cd "system-security-plans/$1"
+    merge-ssp
+    cd $cwd
+else
+    echo "No existing SSP found, skipping the merge step"
+fi
+
+trestle author ssp-assemble -o "$1" -m control-statements
+
+if [ -d "system-security-plans/$1" ]; then
+    split-ssp "system-security-plans/$1/system-security-plan.json"
+fi

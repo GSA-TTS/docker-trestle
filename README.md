@@ -6,10 +6,12 @@ This repository contains the source code for the `ghcr.io/gsa-tts/trestle` Docke
 
 ### General workflow:
 
+1. [Download trestle image and run CLI](#pull-down-the-trestle-image-and-initialize-a-compliance-trestle-project)
 1. [Create the files for a given SSPP](#create-control-statement-markdown-files)
-1. Edit control statements within markdown files
-1. [Assemble markdown contents into a provisional OSCAL SSP](#assemble-ssp-json-from-markdown)
-1. Edit other sections of the SSPP within the smaller json files
+1. Do in a loop:
+    1. Edit control statements within markdown files
+    1. [Assemble markdown contents into a provisional OSCAL SSP](#assemble-ssp-json-from-markdown)
+    1. Edit other sections of the SSPP within the smaller json files
 1. [Assemble everything into a final OSCAL SSP (TODO: within a CI workflow)](#final-ssp-assembly)
 
 ### Pull down the trestle image and initialize a compliance trestle project
@@ -25,15 +27,20 @@ All other usage commands assume you are operating within the docker container.
 
 ### Create Control Statement Markdown Files
 
-`generate-ssp-markdown PROFILE_NAME`
-
 If you are using a profile that isn't [shipped with the image](#templates) you must [import it first](#import-profile-into-working-space)
+
+If you are utilizing Component Definitions, you must [import](#import-component-definition-into-working-space) and/or [create](#create-component-definition) them first.
+
+`generate-ssp-markdown -p PROFILE_NAME [-c COMP_DEF_NAMES]`
+
 
 ### Assemble SSP JSON from Markdown
 
-`assemble-ssp-json SYSTEM_NAME`
+`assemble-ssp-json -n SYSTEM_NAME [-c COMP_DEF_NAMES]`
 
 This step will create `system-security-plans/SYSTEM_NAME/system-security-plan.json` as well as smaller JSON files within `system-security-plans/SYSTEM_NAME/system-security-plan/` for editing.
+
+This script should be given the same list of Component Definitions that were passed to `generate-ssp-markdown`
 
 ### Final SSP Assembly
 
@@ -46,6 +53,18 @@ If you are using a `PROFILE_NAME` that does not ship with this docker container 
 `trestle import -f PROFILE_URL -o PROFILE_NAME`
 
 Once that is done you can go back to the `generate-ssp-markdown` step
+
+### Import Component Definition into working space:
+
+To import a component that [ships with](#templates) this docker container: `copy-component -n COMPONENT_NAME`
+
+To import a component that is available from a URL: `copy-component -n COMPONENT_NAME -u COMPONENT_URL`
+
+### Create Component Definition
+
+`create-component -n COMPONENT_NAME`
+
+And then edit the created files to contain the component definition.
 
 ### Split SSP into manageable files
 
@@ -60,6 +79,10 @@ The following templates are included in the Docker image:
 #### profiles/lato
 
 A profile representing the set of controls covered by a [GSA LATO](https://www.gsa.gov/system/files/Lightweight-Security-Authorization-Process-%28LATO%29%20%5BCIO-IT-Security-14-68-Rev-7%5D%2009-17-2021docx%20%281%29.pdf) SSPP.
+
+#### component-definitions/cloud_gov
+
+A Component Definition representing the Cloud.gov CRM.
 
 #### catalogs/nist800-53r5
 

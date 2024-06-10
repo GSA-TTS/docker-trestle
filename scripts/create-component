@@ -1,0 +1,45 @@
+#! /usr/bin/env bash
+
+usage="
+$0: Create new minimal Component Definition
+
+Usage:
+    $0 -h
+    $0 -n COMPONENT_NAME
+
+Options:
+-h: show help and exit
+-n: Component Name
+"
+
+set -e
+
+component_name=""
+
+while getopts "hn:" opt; do
+    case "$opt" in
+        n)
+            component_name=${OPTARG}
+            ;;
+        h)
+            echo "$usage"
+            exit 0
+            ;;
+    esac
+done
+
+if [ "$component_name" = "" ]; then
+    echo "$usage"
+    exit 1
+fi
+
+trestle create -t component-definition -o "$component_name"
+trestle create -f "component-definitions/$component_name/component-definition.json" -e "component-definition.components"
+trestle create -f "component-definitions/$component_name/component-definition.json" -e "component-definition.components.0.control-implementations"
+
+echo
+echo "Next steps: update the component-definitions/$component_name/component-definition.json file."
+echo
+echo "You MUST update the components.title field to match the component name you'll use in your SSP markdown"
+echo "You MAY delete all of the contents of the control-implementations field, but that key MUST remain with an array value (may be empty)"
+echo

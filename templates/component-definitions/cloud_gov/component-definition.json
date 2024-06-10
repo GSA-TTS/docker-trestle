@@ -1,0 +1,995 @@
+{
+  "component-definition": {
+    "uuid": "c0b0091e-dee0-4213-b1bd-d1480fcb3b00",
+    "metadata": {
+      "title": "Cloud.gov LATO CRM",
+      "last-modified": "2024-06-04T13:09:35.288026+00:00",
+      "version": "0.0.2",
+      "oscal-version": "1.0.4",
+      "roles": [
+        {
+          "id": "provider",
+          "title": "Provider"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "ed1c8027-6b7c-439e-8aa8-355cf46d3244",
+          "type": "organization",
+          "name": "Cloud.gov",
+          "links": [
+            {
+              "href": "https://cloud.gov",
+              "rel": "website"
+            }
+          ]
+        }
+      ]
+    },
+    "components": [
+      {
+        "uuid": "feef8607-5d90-493e-b367-b27b79dcabf6",
+        "type": "service",
+        "title": "Cloud.gov",
+        "description": "The Cloud.gov Platform-as-a-Service",
+        "props": [
+          {
+            "name": "Rule_Id",
+            "value": "fully-inherited",
+            "remarks": "rule_0"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Customer fully inherits this control with no responsibility",
+            "remarks": "rule_0"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "app-account-management-needed",
+            "remarks": "rule_app_ac"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Application accounts are the responsiblity of the application owner",
+            "remarks": "rule_app_ac"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "system-roles-needed",
+            "remarks": "rule_user_roles"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "The system must manage user roles",
+            "remarks": "rule_user_roles"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "app-supplementary-logging",
+            "remarks": "rule_audit_logging_supplement"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "System must provide additional logging if required",
+            "remarks": "rule_audit_logging_supplement"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "app-monitoring-scanning-required",
+            "remarks": "rule_app_monitoring"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Application scanning and monitoring are the system responsibility",
+            "remarks": "rule_app_monitoring"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "app-config-control",
+            "remarks": "rule_app_config_control"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Application configuration control is the system responsibility",
+            "remarks": "rule_app_config_control"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "app-redundant-containers",
+            "remarks": "rule_app_redundant_containers"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Application owners must ensure multiple instances of application are running",
+            "remarks": "rule_app_redundant_containers"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "app-mfa-required",
+            "remarks": "rule_application_mfa"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Application owners must implement an MFA solution for all accounts",
+            "remarks": "rule_application_mfa"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "egress-control-in-place",
+            "remarks": "rule_app_egress_control"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Customer must ensure egress control is in place",
+            "remarks": "rule_app_egress_control"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "app-field-level-encryption",
+            "remarks": "rule_app_field_level_encryption"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Customer must further encrypt sensitive data at the field level",
+            "remarks": "rule_app_field_level_encryption"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "app-event-analysis",
+            "remarks": "rule_app_event_analysis"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Application owners are responsible for using automated tools to analyze cloud.gov-supplied events feed",
+            "remarks": "rule_app_event_analysis"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "app-alert-sla",
+            "remarks": "rule_app_alert_sla"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Application owners must establish an SLA with cloud.gov for reporting malicious code detection",
+            "remarks": "rule_app_alert_sla"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "app-log-monitoring",
+            "remarks": "rule_app_log_monitoring"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Application owners are responsible for monitoring their application logs",
+            "remarks": "rule_app_log_monitoring"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://cloud.gov",
+            "rel": "reference"
+          }
+        ],
+        "protocols": [
+          {
+            "uuid": "0130b4ef-4561-4363-bab5-1e20b9888e49",
+            "name": "https",
+            "title": "Transport Layer Security",
+            "port-ranges": [
+              {
+                "start": 443,
+                "end": 443,
+                "transport": "TCP"
+              }
+            ]
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "812617fa-8f40-4708-aa93-2c21df5b9699",
+            "source": "trestle://profiles/lato/profile.json",
+            "description": "Inheritable controls implemented by cloud.gov on behalf of resident applications",
+            "implemented-requirements": [
+              {
+                "uuid": "185ebdf8-beec-466f-884c-0d1cfe278ee5",
+                "control-id": "ac-2",
+                "description": "REPLACE_ME",
+                "props": [
+                  {
+                    "name": "implementation-status",
+                    "value": "planned"
+                  }
+                ],
+                "statements": [
+                  {
+                    "statement-id": "ac-2_smt.a",
+                    "uuid": "ef27db3f-e055-4d66-a5b6-fd6783af8a3d",
+                    "description": "For UAA accounts (Cloud Foundry User Account and Authentication accounts, which includes cloud.gov users who log in via agency single sign-on or the cloud.gov identity provider) used to manage applications, cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner.\n\nThat is, your developer login to cloud.gov where you create/edit/delete applications on the platform would count as covered, but accounts within the applications you create would not be, unless they too integrate with the UAA.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-account-management-needed"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ac-2_smt.b",
+                    "uuid": "7062d856-ddc7-4fa5-a9ee-e78dedf1b3af",
+                    "description": "For UAA accounts (Cloud Foundry User Account and Authentication accounts, which includes cloud.gov users who log in via agency single sign-on or the cloud.gov identity provider) used to manage applications, cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-account-management-needed"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ac-2_smt.c",
+                    "uuid": "7047cb33-712b-4064-8ab6-117daac17ba8",
+                    "description": "For UAA accounts (Cloud Foundry User Account and Authentication accounts, which includes cloud.gov users who log in via agency single sign-on or the cloud.gov identity provider) used to manage applications, cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-account-management-needed"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ac-2_smt.d",
+                    "uuid": "969f6bd2-b214-478f-ba12-894146fbf0b4",
+                    "description": "For UAA accounts (Cloud Foundry User Account and Authentication accounts, which includes cloud.gov users who log in via agency single sign-on or the cloud.gov identity provider) used to manage applications, cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-account-management-needed"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ac-2_smt.e",
+                    "uuid": "3cf79634-33f4-4ce7-89f2-438973e03a82",
+                    "description": "For UAA accounts (Cloud Foundry User Account and Authentication accounts, which includes cloud.gov users who log in via agency single sign-on or the cloud.gov identity provider) used to manage applications, cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-account-management-needed"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ac-2_smt.f",
+                    "uuid": "d02a3f6a-8db3-4d9e-9c05-c93bb335ae5f",
+                    "description": "For UAA accounts (Cloud Foundry User Account and Authentication accounts, which includes cloud.gov users who log in via agency single sign-on or the cloud.gov identity provider) used to manage applications, cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-account-management-needed"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ac-2_smt.g",
+                    "uuid": "18c7d203-a1e7-4157-a411-1f21038a2daa",
+                    "description": "For UAA accounts (Cloud Foundry User Account and Authentication accounts, which includes cloud.gov users who log in via agency single sign-on or the cloud.gov identity provider) used to manage applications, cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-account-management-needed"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ac-2_smt.h",
+                    "uuid": "2d610cc9-9225-468e-a634-aee47a1ba9a6",
+                    "description": "For UAA accounts (Cloud Foundry User Account and Authentication accounts, which includes cloud.gov users who log in via agency single sign-on or the cloud.gov identity provider) used to manage applications, cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-account-management-needed"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ac-2_smt.i",
+                    "uuid": "16b0de6c-1c52-49cf-b5d6-4c15c074eea4",
+                    "description": "For UAA accounts (Cloud Foundry User Account and Authentication accounts, which includes cloud.gov users who log in via agency single sign-on or the cloud.gov identity provider) used to manage applications, cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-account-management-needed"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ac-2_smt.j",
+                    "uuid": "555e091a-c6aa-4e56-9786-4de7369cac38",
+                    "description": "For UAA accounts (Cloud Foundry User Account and Authentication accounts, which includes cloud.gov users who log in via agency single sign-on or the cloud.gov identity provider) used to manage applications, cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-account-management-needed"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ac-2_smt.k",
+                    "uuid": "c739214d-ef3a-4c92-9fc9-0cb0258c25e9",
+                    "description": "For UAA accounts (Cloud Foundry User Account and Authentication accounts, which includes cloud.gov users who log in via agency single sign-on or the cloud.gov identity provider) used to manage applications, cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-account-management-needed"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "uuid": "3dbcb5aa-d541-4959-920d-34aca80c540b",
+                "control-id": "ac-3",
+                "description": "For UAA accounts used to manage the applications cloud.gov provides this control. Application accounts unless integrated with the UAA are the responsibility of the application owner. The delineation of higher privileged accounts in the application and their monitoring is the responsibility of the application owner.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "app-account-management-needed"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ]
+              },
+              {
+                "uuid": "413a1883-c009-47ab-9a7a-bcc7e07e103d",
+                "control-id": "ac-6.5",
+                "description": "The roles are defined by cloud.gov but the application owner must make the proper assignments to personnel to ensure least privilege is enforced.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "system-roles-needed"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ]
+              },
+              {
+                "uuid": "13fb863b-864b-4119-920b-32711f97a4db",
+                "control-id": "ac-6.9",
+                "description": "cloud.gov automatically logs privileged actions taken within cloud.gov.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "fully-inherited"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "implemented"
+                  }
+                ]
+              },
+              {
+                "uuid": "bafad407-b0e9-4986-b2ef-fc6a9518e481",
+                "control-id": "au-2",
+                "description": "REPLACE_ME",
+                "props": [
+                  {
+                    "name": "implementation-status",
+                    "value": "planned"
+                  }
+                ],
+                "statements": [
+                  {
+                    "statement-id": "au-2_smt.a",
+                    "uuid": "57a24a01-c076-46d8-9ba2-2791dffbe474",
+                    "description": "Application owners must ensure that the auditing provided by cloud.gov meets their requirements and must provide for additional auditing if needed.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-supplementary-logging"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "au-2_smt.b",
+                    "uuid": "18ca26bb-adeb-4e8c-bfd8-52342de9fc4f",
+                    "description": "Application owners must ensure that the auditing provided by cloud.gov meets their requirements and must provide for additional auditing if needed.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-supplementary-logging"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "au-2_smt.c",
+                    "uuid": "fcaf3238-ed1b-4c95-938d-918d8b3d4536",
+                    "description": "Application owners must ensure that the auditing provided by cloud.gov meets their requirements and must provide for additional auditing if needed.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-supplementary-logging"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "au-2_smt.d",
+                    "uuid": "72ae1b20-c7de-4ddb-b5c5-39f162e136a5",
+                    "description": "Application owners must ensure that the auditing provided by cloud.gov meets their requirements and must provide for additional auditing if needed.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-supplementary-logging"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "au-2_smt.e",
+                    "uuid": "163ff6e4-f094-47c7-bda0-e1899516d1bb",
+                    "description": "Application owners must ensure that the auditing provided by cloud.gov meets their requirements and must provide for additional auditing if needed.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-supplementary-logging"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "uuid": "4fa553d9-c302-4828-88bd-8a1449fd5d11",
+                "control-id": "ca-7",
+                "description": "REPLACE_ME",
+                "props": [
+                  {
+                    "name": "implementation-status",
+                    "value": "planned"
+                  }
+                ],
+                "statements": [
+                  {
+                    "statement-id": "ca-7_smt.a",
+                    "uuid": "d918e4c9-7b90-4b50-9e3d-51920c1ad4fb",
+                    "description": "Operating systems and DB scans are out of the boundary of application owners. The requirement is bound to the application code and is the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-monitoring-scanning-required"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ca-7_smt.b",
+                    "uuid": "6e18c423-13e8-4cc8-8f89-a78fc7c32521",
+                    "description": "Operating systems and DB scans are out of the boundary of application owners. The requirement is bound to the application code and is the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-monitoring-scanning-required"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ca-7_smt.c",
+                    "uuid": "321c78de-a7ee-4ee1-904c-e20b270ee4b5",
+                    "description": "Operating systems and DB scans are out of the boundary of application owners. The requirement is bound to the application code and is the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-monitoring-scanning-required"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ca-7_smt.d",
+                    "uuid": "39349c10-9f25-4960-8edd-37fd186b5d5d",
+                    "description": "Operating systems and DB scans are out of the boundary of application owners. The requirement is bound to the application code and is the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-monitoring-scanning-required"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ca-7_smt.e",
+                    "uuid": "ea725a89-6ff4-4d91-aaef-142577e6fe70",
+                    "description": "Operating systems and DB scans are out of the boundary of application owners. The requirement is bound to the application code and is the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-monitoring-scanning-required"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ca-7_smt.f",
+                    "uuid": "c3583bb7-094f-402c-92f5-51d5233ef503",
+                    "description": "Operating systems and DB scans are out of the boundary of application owners. The requirement is bound to the application code and is the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-monitoring-scanning-required"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "ca-7_smt.g",
+                    "uuid": "8956b1e8-00c0-49d0-8acb-7b854c6810bb",
+                    "description": "Operating systems and DB scans are out of the boundary of application owners. The requirement is bound to the application code and is the responsibility of the application owner.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-monitoring-scanning-required"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "uuid": "d1f11792-ac1f-4221-9074-592278ceecaf",
+                "control-id": "cm-2.2",
+                "description": "Application owners are responsible for utilizing an automated mechanism to manage the baseline configuration of their applications. All operating systems, network and DB configurations are outside of the application owner boundary.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "app-config-control"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ]
+              },
+              {
+                "uuid": "76582388-67db-43f5-b64d-cc6b687b4252",
+                "control-id": "cm-6.1",
+                "description": "Application owners are responsible for implementing automated controls to verify their intended state. They can use the cloud.gov API, Terraform, etc. to accomplish this.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "app-config-control"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ]
+              },
+              {
+                "uuid": "27a14aa7-2959-41d9-8d4d-1d3e0f059db3",
+                "control-id": "cp-7.1",
+                "description": "cloud.gov distributes customer workloads across availability zones. Application owners are responsible for ensuring multiple instances of their application are running in order to take advantage of multiple availability zones.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "app-redundant-containers"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ]
+              },
+              {
+                "uuid": "8e48ee7f-0e44-45f6-ac2e-22eb0034ba65",
+                "control-id": "ia-2",
+                "description": "Application owners are responsible for implementing a MFA solution for access to their systems and resources. cloud.gov supports customers in leveraging cloud.gov's MFA-enabled authentication system to authenticate government users.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "app-mfa-required"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ]
+              },
+              {
+                "uuid": "98c750bf-1d3b-4e33-b879-789c84bf205b",
+                "control-id": "ia-2.1",
+                "description": "Application owners are responsible for implementing a MFA solution for access to their systems and resources. cloud.gov supports customers in leveraging cloud.gov's MFA-enabled authentication system to authenticate government users.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "app-mfa-required"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ]
+              },
+              {
+                "uuid": "cbab3fdd-7df8-4a44-9326-fbc7862651cc",
+                "control-id": "ia-2.2",
+                "description": "Application owners are responsible for implementing a MFA solution for access to their systems and resources. cloud.gov supports customers in leveraging cloud.gov's MFA-enabled authentication system to authenticate government users.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "app-mfa-required"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ]
+              },
+              {
+                "uuid": "11bc932e-561d-4d85-9e6a-86e230c0e725",
+                "control-id": "sc-7",
+                "description": "REPLACE_ME",
+                "props": [
+                  {
+                    "name": "implementation-status",
+                    "value": "planned"
+                  }
+                ],
+                "statements": [
+                  {
+                    "statement-id": "sc-7_smt.a",
+                    "uuid": "fb721526-81e6-4cfd-8bb0-363018512a50",
+                    "description": "Application owners are responsible for ensuring their application does not exchange traffic with systems outside its own boundary over unsanctioned or unmonitored interfaces.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "egress-control-in-place"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ],
+                    "responsible-roles": [
+                      {
+                        "role-id": "customer"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "sc-7_smt.b",
+                    "uuid": "e9aadfed-281f-454f-a2bb-bf89c42bd5e6",
+                    "description": "Application owners are responsible for ensuring their application does not exchange traffic with systems outside its own boundary over unsanctioned or unmonitored interfaces.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "egress-control-in-place"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ],
+                    "responsible-roles": [
+                      {
+                        "role-id": "customer"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "sc-7_smt.c",
+                    "uuid": "78367d72-7be3-4830-bb12-de9cfa6ffcf4",
+                    "description": "Application owners are responsible for ensuring their application does not exchange traffic with systems outside its own boundary over unsanctioned or unmonitored interfaces.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "egress-control-in-place"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ],
+                    "responsible-roles": [
+                      {
+                        "role-id": "customer"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "uuid": "0364b4ce-1d30-4d4c-8268-e020b7b01607",
+                "control-id": "sc-8.1",
+                "description": "Customer applications fully inherit this control from cloud.gov.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "fully-inherited"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "implemented"
+                  }
+                ]
+              },
+              {
+                "uuid": "032738f6-3cf2-4d44-b8d9-bf508343b1d8",
+                "control-id": "sc-28.1",
+                "description": "cloud.gov has built-in cryptographic mechanisms to prevent unauthorized disclosure and modification of data. Customers are responsible for further securing/encrypting any sensitive information in their customer applications, and for auditing the permissions their users have for managing their applications.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "app-field-level-encryption"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ],
+                "responsible-roles": [
+                  {
+                    "role-id": "provider",
+                    "party-uuids": [
+                      "ed1c8027-6b7c-439e-8aa8-355cf46d3244"
+                    ]
+                  },
+                  {
+                    "role-id": "customer"
+                  }
+                ]
+              },
+              {
+                "uuid": "2329e13c-f955-41ed-9cc6-ad74a3eda0bc",
+                "control-id": "si-4",
+                "description": "REPLACE_ME",
+                "props": [
+                  {
+                    "name": "implementation-status",
+                    "value": "planned"
+                  }
+                ],
+                "statements": [
+                  {
+                    "statement-id": "si-4_smt.a",
+                    "uuid": "fce32587-bf6f-4cbc-b8c0-04590f32102e",
+                    "description": "Application owners are responsible for monitoring their application logs for signs of unauthorized activity according to laws and regulations, and applying heightened scrutiny when there is an indication of increased risk.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-log-monitoring"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "si-4_smt.b",
+                    "uuid": "b20c5f1a-8dd1-41be-ac16-a608accaddee",
+                    "description": "Application owners are responsible for monitoring their application logs for signs of unauthorized activity according to laws and regulations, and applying heightened scrutiny when there is an indication of increased risk.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-log-monitoring"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "si-4_smt.c",
+                    "uuid": "1d328508-7b35-43df-a0fe-21cbe0bb2130",
+                    "description": "Application owners are responsible for monitoring their application logs for signs of unauthorized activity according to laws and regulations, and applying heightened scrutiny when there is an indication of increased risk.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-log-monitoring"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "si-4_smt.d",
+                    "uuid": "05aafbfe-c435-4eeb-81d2-9df8ba830211",
+                    "description": "Application owners are responsible for monitoring their application logs for signs of unauthorized activity according to laws and regulations, and applying heightened scrutiny when there is an indication of increased risk.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-log-monitoring"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "si-4_smt.e",
+                    "uuid": "d158b4f0-fe99-4ea2-a327-2eb5bb63877f",
+                    "description": "Application owners are responsible for monitoring their application logs for signs of unauthorized activity according to laws and regulations, and applying heightened scrutiny when there is an indication of increased risk.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-log-monitoring"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "si-4_smt.f",
+                    "uuid": "d21935b0-aea6-4b76-b86d-e50fa3ea3ba7",
+                    "description": "Application owners are responsible for monitoring their application logs for signs of unauthorized activity according to laws and regulations, and applying heightened scrutiny when there is an indication of increased risk.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-log-monitoring"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "si-4_smt.g",
+                    "uuid": "55edb0f8-e683-4791-99e3-625f80177e65",
+                    "description": "Application owners are responsible for monitoring their application logs for signs of unauthorized activity according to laws and regulations, and applying heightened scrutiny when there is an indication of increased risk.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "app-log-monitoring"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "partial"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "uuid": "c3eb1545-3b1f-4200-bef4-3190fcf8f3f4",
+                "control-id": "si-4.2",
+                "description": "cloud.gov supplies a real-time feed of events related to customer applications. Application owners are responsible for using automated tools to interpret and analyze these events.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "app-event-analysis"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ]
+              },
+              {
+                "uuid": "11947fdd-233b-4f9e-8fa9-302581a9bd94",
+                "control-id": "si-4.4",
+                "description": "Customer applications fully inherit this control from cloud.gov.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "fully-inherited"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "implemented"
+                  }
+                ]
+              },
+              {
+                "uuid": "87687f7d-7eaa-4fcd-9f60-bfc5eea13689",
+                "control-id": "si-4.5",
+                "description": "Application owners must establish the SLA with cloud.gov for reporting malicious code detection that effects the application. cloud.gov will detect files matching AV/Malware signatures in customer application deployments, or uploads, but alerts can only be routed to customers during business hours.",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "app-alert-sla"
+                  },
+                  {
+                    "name": "implementation-status",
+                    "value": "partial"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

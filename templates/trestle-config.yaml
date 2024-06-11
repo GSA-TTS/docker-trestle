@@ -1,0 +1,5 @@
+# trestle-config.yaml file for configuring generate-ssp-markdown and assemble-ssp-json.
+system-name: ""
+profile: ""
+# components:
+#   - component-name

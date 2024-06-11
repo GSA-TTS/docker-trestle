@@ -5,7 +5,7 @@ $0: Assemble markdown controls into an OSCAL JSON SSP
 
 Usage:
     $0 -h
-    $0 [-n SYSTEM_NAME] [-d COMMA_SEP_COMPDEFS] [-m MARKDOWN_DIR] [-r]
+    $0 [-n SYSTEM_NAME] [-c COMMA_SEP_COMPDEFS] [-m MARKDOWN_DIR] [-r]
 
 Options:
 -h: show help and exit

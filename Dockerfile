@@ -49,6 +49,8 @@ COPY OSCAL_REFERENCE.md /app/
 COPY scripts /app/bin
 
 ENV PATH="/app/bin:${PATH}"
+# Allow for skipping automatic install of trestle-config.yaml
+ENV SKIP_TRESTLE_CONFIG=false
 ENTRYPOINT ["/app/entrypoint.sh"]
 
 # Run the application.

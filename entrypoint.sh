@@ -10,7 +10,7 @@ if [ ! -d /app/docs/.trestle ]; then
     trestle init --govdocs
 fi
 
-if [ ! -f /app/docs/trestle-config.yaml ]; then
+if [[ ! -f /app/docs/trestle-config.yaml && "$SKIP_TRESTLE_CONFIG" != "true" ]]; then
     cp /app/templates/trestle-config.yaml .
 fi
 

@@ -5,7 +5,7 @@ $0: Generate control statement markdown for an SSP
 
 Usage:
     $0 -h
-    $0 [-p PROFILE_NAME] [-c COMPONENT_NAMES_SOURCE] [-s LEVERAGED_SSP] [-m MARKDOWN_DIR] [-f]
+    $0 [-p PROFILE_NAME] [-c COMMA_SEP_COMPDEFS] [-s LEVERAGED_SSP] [-m MARKDOWN_DIR] [-f]
 
 Options:
 -h: show help and exit

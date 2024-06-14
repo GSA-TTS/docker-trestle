@@ -5,22 +5,28 @@ $0: Generate control statement markdown for an SSP
 
 Usage:
     $0 -h
-    $0 -p PROFILE_NAME [-c COMMA_SEP_COMPDEFS] [-s LEVERAGED_SSP] [-m MARKDOWN_DIR] [-f]
+    $0 [-p PROFILE_NAME] [-c COMMA_SEP_COMPDEFS] [-s LEVERAGED_SSP] [-m MARKDOWN_DIR] [-f]
 
 Options:
 -h: show help and exit
--p: Profile name to base the SSP on
--c: Comma-separated list of ComponentDefinitions to include. Optional
--s: SSP to leverage as local name or URL. Optional
--m: Directory to put markdown files in. Defaults to control-statements
+-p: Profile name to base the SSP on. Defaults to 'profile' value in trestle-config.yaml
+-c: Comma-separated list of ComponentDefinitions to include. Defaults to 'components:' list in config
+-s: SSP to leverage as local name or URL. Defaults to 'leveraged-ssp' value in trestle-config.yaml
+-m: Directory to put markdown files in. Defaults to 'markdown' value in config, or 'control-statements'
 -f: Force overwrite
+
+Notes:
+* Will load defaults from trestle-config.yaml file, if present
 "
 
 set -e
 
 declare -a optional_args
-markdown="control-statements"
-profile=""
+source /app/bin/functions.sh
+markdown=$(yaml_parse_value 'trestle-config.yaml' 'markdown' 'control-statements')
+profile=$(yaml_parse_value 'trestle-config.yaml' 'profile')
+leveraged_ssp=$(yaml_parse_value 'trestle-config.yaml' 'leveraged-ssp')
+components=$(yaml_comma_sep_components 'trestle-config.yaml')
 
 while getopts "hp:c:s:m:f" opt; do
     case "$opt" in
@@ -28,10 +34,10 @@ while getopts "hp:c:s:m:f" opt; do
             profile=${OPTARG}
             ;;
         c)
-            optional_args+=("-cd" ${OPTARG})
+            components=${OPTARG}
             ;;
         s)
-            optional_args+=("-ls" ${OPTARG})
+            leveraged_ssp=${OPTARG}
             ;;
         m)
             markdown=${OPTARG}
@@ -53,6 +59,14 @@ fi
 
 if [ ! -d "profiles/$profile" ]; then
     copy-profile "$profile"
+fi
+
+if [ "$components" != "" ]; then
+    optional_args+=("-cd" $components)
+fi
+
+if [ "$leveraged_ssp" != "" ]; then
+    optional_args+=("-ls" $leveraged_ssp)
 fi
 
 trestle author ssp-generate -p "$profile" -o "$markdown" "${optional_args[@]}"

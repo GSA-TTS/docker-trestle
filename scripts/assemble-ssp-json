@@ -5,21 +5,26 @@ $0: Assemble markdown controls into an OSCAL JSON SSP
 
 Usage:
     $0 -h
-    $0 -n SYSTEM_NAME [-c COMMA_SEP_COMPDEFS] [-m MARKDOWN_DIR] [-r]
+    $0 [-n SYSTEM_NAME] [-c COMMA_SEP_COMPDEFS] [-m MARKDOWN_DIR] [-r]
 
 Options:
 -h: show help and exit
--n: System Name
--c: Comma-separated list of ComponentDefinitions to include. Optional
--m: Directory containing markdown files. Defaults to control-statements
+-n: System Name. Defaults to 'system-name' value in trestle-config.yaml
+-c: Comma-separated list of ComponentDefinitions to include. Defaults to 'components:' list in config
+-m: Directory containing markdown files. Defaults to 'markdown' value in config, or 'control-statements'
 -r: Regenerate UUIDs
+
+Notes:
+* Will load defaults from  trestle-config.yaml file, if present
 "
 
 set -e
 
 declare -a optional_args
-markdown="control-statements"
-system_name=""
+source /app/bin/functions.sh
+markdown=$(yaml_parse_value 'trestle-config.yaml' 'markdown' 'control-statements')
+system_name=$(yaml_parse_value 'trestle-config.yaml' 'system-name')
+components=$(yaml_comma_sep_components 'trestle-config.yaml')
 
 while getopts "hn:c:m:r" opt; do
     case "$opt" in
@@ -27,7 +32,7 @@ while getopts "hn:c:m:r" opt; do
             system_name=${OPTARG}
             ;;
         c)
-            optional_args+=("-cd" ${OPTARG})
+            components=${OPTARG}
             ;;
         m)
             markdown=${OPTARG}
@@ -45,6 +50,10 @@ done
 if [ "$system_name" = "" ]; then
     echo "$usage"
     exit 1
+fi
+
+if [ "$components" != "" ]; then
+    optional_args+=("-cd" $components)
 fi
 
 if [ -d "system-security-plans/$system_name" ]; then

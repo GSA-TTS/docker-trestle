@@ -9,7 +9,7 @@ Usage:
 
 Options:
 -h: show help and exit
--n: Local Component Name
+-n: Component Name
 -u: Remote Component URL. Required if COMPONENT_NAME is not shipped in templates folder
 "
 

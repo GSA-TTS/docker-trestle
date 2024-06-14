@@ -37,8 +37,9 @@ RUN adduser \
 # RUN --mount=type=cache,target=/root/.cache/pip \
 #     --mount=type=bind,source=requirements.txt,target=requirements.txt \
 #     python -m pip install -r requirements.txt
+ARG TRESTLE_VERSION=2.6.1
 RUN --mount=type=cache,target=/root/.cache/pip \
-    python -m pip install compliance-trestle
+    python -m pip install "compliance-trestle==${TRESTLE_VERSION}"
 
 # Switch to the non-privileged user to run the application.
 USER appuser
@@ -49,6 +50,8 @@ COPY OSCAL_REFERENCE.md /app/
 COPY scripts /app/bin
 
 ENV PATH="/app/bin:${PATH}"
+# Allow for skipping automatic install of trestle-config.yaml
+ENV SKIP_TRESTLE_CONFIG=false
 ENTRYPOINT ["/app/entrypoint.sh"]
 
 # Run the application.

@@ -3,9 +3,9 @@
     "uuid": "c0b0091e-dee0-4213-b1bd-d1480fcb3b00",
     "metadata": {
       "title": "Cloud.gov LATO CRM",
-      "last-modified": "2024-06-04T13:09:35.288026+00:00",
+      "last-modified": "2024-06-24T16:15:54Z",
       "version": "0.0.2",
-      "oscal-version": "1.0.4",
+      "oscal-version": "1.1.2",
       "roles": [
         {
           "id": "provider",

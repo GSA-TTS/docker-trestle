@@ -6,7 +6,7 @@
 
 # Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
 
-ARG PYTHON_VERSION=3.9.19
+ARG PYTHON_VERSION=3.11.9
 FROM python:${PYTHON_VERSION}-slim as base
 
 # Prevents Python from writing pyc files.
@@ -37,7 +37,7 @@ RUN adduser \
 # RUN --mount=type=cache,target=/root/.cache/pip \
 #     --mount=type=bind,source=requirements.txt,target=requirements.txt \
 #     python -m pip install -r requirements.txt
-ARG TRESTLE_VERSION=2.6.1
+ARG TRESTLE_VERSION=3.2.0
 RUN --mount=type=cache,target=/root/.cache/pip \
     python -m pip install "compliance-trestle==${TRESTLE_VERSION}"
 

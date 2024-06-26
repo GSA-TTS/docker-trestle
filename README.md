@@ -107,6 +107,10 @@ The `/app/docs` directory can be used as a scratch area for any temporary trestl
 ### Updating the Docker image:
 
 1. Make required changes to the Dockerfile
-1. Build the image: `docker build -t ghcr.io/gsa-tts/trestle .`
+1. Build the image: `docker build --platform linux/arm64,linux/amd64 -t ghcr.io/gsa-tts/trestle .`
+
+    > [!TIP]
+    > You may need to [enable containerd image store](https://docs.docker.com/desktop/containerd/#enable-the-containerd-image-store) to support mutli-platform builds.
+
 1. Tag with a datestamp: `docker tag ghcr.io/gsa-tts/trestle ghcr.io/gsa-tts/trestle:YYYYMMDD`
 1. Push the new tag to Docker Hub: `docker push ghcr.io/gsa-tts/trestle:YYYYMMDD`

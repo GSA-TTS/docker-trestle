@@ -46,7 +46,7 @@ USER appuser
 
 COPY --chown=appuser:appuser --chmod=744 entrypoint.sh /app/entrypoint.sh
 COPY --chown=appuser:appuser templates /app/templates/
-COPY OSCAL_REFERENCE.md /app/
+COPY *.md /app/
 COPY scripts /app/bin
 
 ENV PATH="/app/bin:${PATH}"

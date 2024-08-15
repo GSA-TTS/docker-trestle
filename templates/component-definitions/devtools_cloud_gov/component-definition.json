@@ -17,27 +17,52 @@
           {
             "name": "Rule_Id",
             "value": "ssh-access-disabled",
-            "remarks": "rule_ssh_access_disabled"
+            "remarks": "rule_ssh_access_disabled_1"
           },
           {
             "name": "Rule_Description",
             "value": "Production spaces should disable ssh access",
-            "remarks": "rule_ssh_access_disabled"
+            "remarks": "rule_ssh_access_disabled_1"
           },
           {
             "name": "Parameter_Id",
             "value": "gov.cloud.space-names",
-            "remarks": "rule_ssh_access_disabled"
+            "remarks": "rule_ssh_access_disabled_1"
           },
           {
             "name": "Parameter_Description",
             "value": "The cloud.gov spaces in which ssh access should be disabled",
-            "remarks": "rule_ssh_access_disabled"
+            "remarks": "rule_ssh_access_disabled_1"
           },
           {
             "name": "Parameter_Value_Alternatives",
             "value": "TODO - update to comma separated list of production spaces",
-            "remarks": "rule_ssh_access_disabled"
+            "remarks": "rule_ssh_access_disabled_1"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "ssh-access-disabled",
+            "remarks": "rule_ssh_access_disabled_2"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Production spaces should disable ssh access",
+            "remarks": "rule_ssh_access_disabled_2"
+          },
+          {
+            "name": "Parameter_Id",
+            "value": "gov.cloud.org-name",
+            "remarks": "rule_ssh_access_disabled_2"
+          },
+          {
+            "name": "Parameter_Description",
+            "value": "The cloud.gov org in which ssh access should be disabled",
+            "remarks": "rule_ssh_access_disabled_2"
+          },
+          {
+            "name": "Parameter_Value_Alternatives",
+            "value": "TODO - update to production org",
+            "remarks": "rule_ssh_access_disabled_2"
           }
         ],
         "control-implementations": [
@@ -46,6 +71,10 @@
             "source": "trestle://catalogs/nist800-53r5/catalog.json",
             "description": "Best practice control content for cloud.gov-hosted applications",
             "set-parameters": [
+              {
+                "param-id": "gov.cloud.org-name",
+                "values": ["TODO - cloud.gov org name"]
+              },
               {
                 "param-id": "gov.cloud.space-names",
                 "values": [
@@ -69,7 +98,7 @@
                   {
                     "statement-id": "sc-7_smt.a",
                     "uuid": "7980db8d-2517-4c1d-a1ac-ab28bceefc35",
-                    "description": "SSH access to production spaces: {{ insert: param, gov.cloud.space-names }} within Cloud.gov has been disabled.",
+                    "description": "SSH access to production spaces: {{ insert: param, gov.cloud.space-names }} within Cloud.gov organization {{ insert: param, gov.cloud.org-name }} has been disabled.",
                     "props": [
                       {
                         "name": "Rule_Id",
@@ -112,7 +141,7 @@
                   {
                     "statement-id": "si-4_smt.b",
                     "uuid": "30e83cb4-8214-491b-85d8-ce85b1a58e9d",
-                    "description": "SSH Access has been disabled to production spaces {{ insert: param, gov.cloud.space-names }} to limit potential unauthorized use.",
+                    "description": "SSH Access has been disabled to production spaces {{ insert: param, gov.cloud.space-names }} in organization {{ insert: param, gov.cloud.org-name }} to limit potential unauthorized use.",
                     "props": [
                       {
                         "name": "Rule_Id",

@@ -84,6 +84,10 @@ A profile representing the set of controls covered by a [GSA LATO](https://www.g
 
 A Component Definition representing the Cloud.gov CRM.
 
+#### component-definitions/devtools_cloud_gov
+
+A set of testable best practices for running applications on cloud.gov. This component integrates with [Auditree](https://auditree.github.io/) and [c2p](https://github.com/oscal-compass/compliance-to-policy) to generate compliance results
+
 #### catalogs/nist800-53r5
 
 A copy of the full NIST 800-53 revision 5 catalog.

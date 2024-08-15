@@ -36,7 +36,7 @@
           },
           {
             "name": "Parameter_Value_Alternatives",
-            "value": "TODO",
+            "value": "TODO - update to comma separated list of production spaces",
             "remarks": "rule_ssh_access_disabled"
           }
         ],
@@ -49,7 +49,8 @@
               {
                 "param-id": "gov.cloud.space-names",
                 "values": [
-                  "TODO"
+                  "TODO - prod space 1",
+                  "TODO - prod space 2"
                 ]
               }
             ],
@@ -142,13 +143,33 @@
           },
           {
             "name": "Check_Id",
-            "value": "checks.test_cf_ssh.SpaceSSHDisabledCheck",
+            "value": "checks.test_cf_ssh.SpaceSSHDisabledCheck.test_space_ssh_disabled",
             "remarks": "rule_ssh_access_disabled"
           },
           {
             "name": "Check_Description",
             "value": "Validate that ssh access has been disabled to gov.cloud.space-names spaces",
             "remarks": "rule_ssh_access_disabled"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "26a1c0f5-e6af-49ef-9116-3044d5a26f57",
+            "source": "trestle://catalogs/nist800-53r5/catalog.json",
+            "description": "",
+            "implemented-requirements": [
+              {
+                "uuid": "0f916da6-3c71-4389-8048-5d57a0dfd1a4",
+                "control-id": "na",
+                "description": "List of Rules that Auditree is checking",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "ssh-access-disabled"
+                  }
+                ]
+              }
+            ]
           }
         ]
       }

@@ -1,0 +1,207 @@
+{
+  "component-definition": {
+    "uuid": "d8c6b192-f2c1-4434-8307-d8aed1826fe6",
+    "metadata": {
+      "title": "Cloud.gov Best Practices for DevTools-based applications.",
+      "last-modified": "2024-08-15T01:28:29.538446+00:00",
+      "version": "0.0.1",
+      "oscal-version": "1.1.2"
+    },
+    "components": [
+      {
+        "uuid": "f1815d23-9f15-4824-b7c3-b5e4df26f7cc",
+        "type": "policy",
+        "title": "DevTools Cloud.gov",
+        "description": "A set of testable best practices for cloud.gov hosted apps.",
+        "props": [
+          {
+            "name": "Rule_Id",
+            "value": "ssh-access-disabled",
+            "remarks": "rule_ssh_access_disabled_1"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Production spaces should disable ssh access",
+            "remarks": "rule_ssh_access_disabled_1"
+          },
+          {
+            "name": "Parameter_Id",
+            "value": "gov.cloud.space-names",
+            "remarks": "rule_ssh_access_disabled_1"
+          },
+          {
+            "name": "Parameter_Description",
+            "value": "The cloud.gov spaces in which ssh access should be disabled",
+            "remarks": "rule_ssh_access_disabled_1"
+          },
+          {
+            "name": "Parameter_Value_Alternatives",
+            "value": "TODO - update to comma separated list of production spaces",
+            "remarks": "rule_ssh_access_disabled_1"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "ssh-access-disabled",
+            "remarks": "rule_ssh_access_disabled_2"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "Production spaces should disable ssh access",
+            "remarks": "rule_ssh_access_disabled_2"
+          },
+          {
+            "name": "Parameter_Id",
+            "value": "gov.cloud.org-name",
+            "remarks": "rule_ssh_access_disabled_2"
+          },
+          {
+            "name": "Parameter_Description",
+            "value": "The cloud.gov org in which ssh access should be disabled",
+            "remarks": "rule_ssh_access_disabled_2"
+          },
+          {
+            "name": "Parameter_Value_Alternatives",
+            "value": "TODO - update to production org",
+            "remarks": "rule_ssh_access_disabled_2"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "cae08b2c-4d1f-4900-9d04-ebdc76cac54e",
+            "source": "trestle://catalogs/nist800-53r5/catalog.json",
+            "description": "Best practice control content for cloud.gov-hosted applications",
+            "set-parameters": [
+              {
+                "param-id": "gov.cloud.org-name",
+                "values": ["TODO - cloud.gov org name"]
+              },
+              {
+                "param-id": "gov.cloud.space-names",
+                "values": [
+                  "TODO - prod space 1",
+                  "TODO - prod space 2"
+                ]
+              }
+            ],
+            "implemented-requirements": [
+              {
+                "uuid": "1b961b4e-96ea-4ef1-a48b-d21386949450",
+                "control-id": "sc-7",
+                "description": "REPLACE_ME",
+                "props": [
+                  {
+                    "name": "implementation-status",
+                    "value": "planned"
+                  }
+                ],
+                "statements": [
+                  {
+                    "statement-id": "sc-7_smt.a",
+                    "uuid": "7980db8d-2517-4c1d-a1ac-ab28bceefc35",
+                    "description": "SSH access to production spaces: {{ insert: param, gov.cloud.space-names }} within Cloud.gov organization {{ insert: param, gov.cloud.org-name }} has been disabled.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "ssh-access-disabled"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "implemented"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "uuid": "ef2726a2-b454-4deb-8a49-2aa9290639cd",
+                "control-id": "si-4",
+                "description": "REPLACE_ME",
+                "props": [
+                  {
+                    "name": "implementation-status",
+                    "value": "planned"
+                  }
+                ],
+                "statements": [
+                  {
+                    "statement-id": "si-4_smt.a",
+                    "uuid": "756bae92-4f20-47d9-80c1-41345a725b1d",
+                    "description": "The only type of remote connections available within cloud.gov are via SSH to the application containers. There is no other ability for local, remote, or network connections. By default, SSH access to the production space is turned off, except in the event of a security investigation or application failure/performance issues by System Administrators.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "ssh-access-disabled"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "implemented"
+                      }
+                    ]
+                  },
+                  {
+                    "statement-id": "si-4_smt.b",
+                    "uuid": "30e83cb4-8214-491b-85d8-ce85b1a58e9d",
+                    "description": "SSH Access has been disabled to production spaces {{ insert: param, gov.cloud.space-names }} in organization {{ insert: param, gov.cloud.org-name }} to limit potential unauthorized use.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "ssh-access-disabled"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "implemented"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "d90f3053-a333-4b3c-9ff1-d726e29eaffa",
+        "type": "validation",
+        "title": "Auditree",
+        "description": "Auditree checks for Devtools best practices",
+        "props": [
+          {
+            "name": "Rule_Id",
+            "value": "ssh-access-disabled",
+            "remarks": "rule_ssh_access_disabled"
+          },
+          {
+            "name": "Check_Id",
+            "value": "checks.test_cf_ssh.SpaceSSHDisabledCheck.test_space_ssh_disabled",
+            "remarks": "rule_ssh_access_disabled"
+          },
+          {
+            "name": "Check_Description",
+            "value": "Validate that ssh access has been disabled to gov.cloud.space-names spaces",
+            "remarks": "rule_ssh_access_disabled"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "26a1c0f5-e6af-49ef-9116-3044d5a26f57",
+            "source": "trestle://catalogs/nist800-53r5/catalog.json",
+            "description": "",
+            "implemented-requirements": [
+              {
+                "uuid": "0f916da6-3c71-4389-8048-5d57a0dfd1a4",
+                "control-id": "na",
+                "description": "List of Rules that Auditree is checking",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "value": "ssh-access-disabled"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

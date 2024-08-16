@@ -1,0 +1,50 @@
+#! /usr/bin/env bash
+
+usage="
+$0: Assemble markdown controls into an OSCAL JSON Component Definition
+
+Usage:
+    $0 -h
+    $0 -n COMPONENT_NAME [-m MARKDOWN_DIR] [-r]
+
+Options:
+-h: show help and exit
+-n: Component Name
+-m: Directory containing markdown files. Defaults to COMPONENT_NAME
+-r: Regenerate UUIDs
+"
+
+set -e
+
+declare -a optional_args
+markdown=""
+component_name=""
+
+while getopts "hn:m:r" opt; do
+    case "$opt" in
+        n)
+            component_name=${OPTARG}
+            ;;
+        m)
+            markdown=${OPTARG}
+            ;;
+        r)
+            optional_args+=("-r")
+            ;;
+        h)
+            echo "$usage"
+            exit 0
+            ;;
+    esac
+done
+
+if [ "$component_name" = "" ]; then
+    echo "$usage"
+    exit 1
+fi
+
+if [ "$markdown" = "" ]; then
+    markdown=$component_name
+fi
+
+trestle author component-assemble -o "$component_name" -m "$markdown" "${optional_args[@]}"

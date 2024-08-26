@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+usage="
+$0: Get rough list of implementation statuses from control markdown files
+
+Usage:
+  $0 -h
+  $0 [-s INCLUDE_STATUS_LIST] [-i IGNORED_STATUS_LIST] [-m MARKDOWN_DIR]
+
+Options:
+-h: show help and exit
+-s: status names to include, given as comma separated list. Defaults to all controls
+-i: status names to ignore, given as comma separated list.
+-m: Directory containing markdown files. Defaults to 'markdown' value in config, or 'control-statements'
+
+Notes:
+* passing '-s' will take precedence over '-i'
+"
+
+set -e
+
+source /app/bin/functions.sh
+markdown=$(yaml_parse_value 'trestle-config.yaml' 'markdown' 'control-statements')
+ignored=""
+status=""
+
+while getopts "hs:i:m:" opt; do
+  case "$opt" in
+    s)
+      status=`sed s/,/"\\\\\|"/g <<< ${OPTARG}`
+      ;;
+    i)
+      ignored=`sed s/,/"\\\\\|"/g <<< ${OPTARG}`
+      ;;
+    m)
+      markdown=${OPTARG}
+      ;;
+    h)
+      echo "$usage"
+      exit 0
+      ;;
+  esac
+done
+
+echo "==========================================================================="
+echo "Gap report for /app/docs/$markdown"
+echo "==========================================================================="
+
+result=`grep -R "Implementation Status:" /app/docs/"$markdown"/* | cut -d':' -f1,3 | cut -d'/' -f5`
+if [ "$status" != "" ]; then
+  result=`grep $status <<< $result`
+elif [ "$ignored" != "" ]; then
+  result=`grep -v $ignored <<< $result`
+fi
+
+cat <<< $result
+echo "==========================================================================="
+echo "$(wc -l <<< $result) controls found"
+cut -d':' -f2 <<< $result | sort | uniq -c
+echo "==========================================================================="

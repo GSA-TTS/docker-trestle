@@ -17,7 +17,7 @@ Notes:
 * passing '-s' will take precedence over '-i'
 "
 
-set -e
+set -eo pipefail
 
 source /app/bin/functions.sh
 markdown=$(yaml_parse_value 'trestle-config.yaml' 'markdown' 'control-statements')

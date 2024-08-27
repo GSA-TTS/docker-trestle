@@ -12,7 +12,10 @@ This repository contains the source code for the `ghcr.io/gsa-tts/trestle` Docke
     1. Edit control statements within markdown files
     1. [Assemble markdown contents into a provisional OSCAL SSP](#assemble-ssp-json-from-markdown)
     1. Edit other sections of the SSPP within the smaller json files
+    1. [Check your progress](#check-control-status)
 1. [Assemble everything into a final OSCAL SSP (TODO: within a CI workflow)](#final-ssp-assembly)
+1. [Update non-OSCAL SSP sections](#update-non-oscal-ssp-files)
+1. [Render a human-readable SSPP (TODO: within a CI workflow)](#render-ssp)
 
 ### Pull down the trestle image and initialize a compliance trestle project
 
@@ -42,9 +45,28 @@ This step will create `system-security-plans/SYSTEM_NAME/system-security-plan.js
 
 This script should be given the same list of Component Definitions that were passed to `generate-ssp-markdown`
 
+### Check Control Status
+
+The `control-status` script will output a quick report of all of the `Implementation Status` lines for your controls. For instance, to report on the status of all controls except those marked as `implemented`:
+
+`control-status -i implemented`
+
+
 ### Final SSP Assembly
 
 `trestle assemble -n SYSTEM_NAME system-security-plan`
+
+### Update non-OSCAL SSP files.
+
+Edit the files within `ssp-markdown` to populate data for the rendered SSP that can't yet be pulled from OSCAL.
+
+*Hint:* Use [jinja templates](https://oscal-compass.github.io/compliance-trestle/trestle_author_jinja/#custom-jinja-tags) `md_clean_include` and `mdsection_include` to populate content from other existing documents your team is using.
+
+### Render SSP
+
+Output the SSP as a markdown file and html file, both within `ssp-render`
+
+`render-ssp`
 
 ### Import profile into working space:
 

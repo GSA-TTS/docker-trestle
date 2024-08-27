@@ -1,10 +1,17 @@
 #! /usr/bin/env bash
 
-set -e
-
 if [ "$1" = "" ]; then
     echo "Usage: $0 PROFILE_NAME"
     exit 1
 fi
 
 trestle import -f "/app/templates/profiles/$1/profile.json" -o "$1"
+
+set -e
+
+if [ -d "/app/templates/ssp-rendering/$1" ]; then
+    mkdir ssp-render
+    cp -r "/app/templates/ssp-rendering/$1/templates" ssp-render/
+    cp -r /app/templates/ssp-rendering/img ssp-render/
+    cp -r "/app/templates/ssp-rendering/$1/markdown" ssp-markdown
+fi

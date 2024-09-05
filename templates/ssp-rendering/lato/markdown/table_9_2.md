@@ -1,5 +1,5 @@
 <!--
-You can fill in additional rows for this table directly after `endor`
+You can fill in additional rows for this table directly after `endfor`
 -->
 
 Table 9-2. System Assets

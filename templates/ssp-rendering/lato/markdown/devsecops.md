@@ -45,5 +45,5 @@ Instructions: Describe how the process for handling all code changes and release
 
 # 10.8.10 Serverless Design (if applicable)
 <!--
-Instructions: Describe the microservice-based architecture including API and API security. Describe the serverless functions network security model including the perimeter. Describe the code review, scanning, and the dependency scanning tools chain and processes.
+Instructions: Describe the microservice-based architecture including API and API security. Describe the serverless functions' network security model including the perimeter. Describe the code review, scanning, and dependency scanning tool chain and processes.
 -->

@@ -5,7 +5,7 @@ Instructions: Describe how images for Containers are built, how a Continuous Int
 
 # 10.9.2 Container Image Scanning
 <!--
-Instructions: Describe how container images are scanned for security vulnerabilities. Which tools are used for container vulnerability scanning? How often are scans performed and how are images in the CI/CD pipeline scanned. Describe vulnerabilities identified in containers are remediated. Note: GSA OCISO requires the use of Prisma Cloud for internal systems at GSA.
+Instructions: Describe how container images are scanned for security vulnerabilities. Which tools are used for container vulnerability scanning? How often are scans performed and how are images in the CI/CD pipeline scanned. Describe how vulnerabilities identified in containers are remediated. Note: GSA OCISO requires the use of Prisma Cloud for internal systems at GSA.
 -->
 
 # 10.9.3 Container Image Registry
@@ -15,7 +15,7 @@ Instructions: Describe which container registry is used (e.g., Amazon Elastic Co
 
 # 10.9.4 Dockerfile Usage
 <!--
-Instructions: Describe how Docker images are developed. Are the Docker images built from scratch or are base images from an external source used? If it is from source, explain any code quality mechanisms used, such as a linting tool. If images from an external source are used, explain the mechanisms in place to ensure this image can be trusted.
+Instructions: Describe how Docker images are developed. Are the Docker images built from scratch or are base images from an external source used? If it is from scratch, explain any code quality mechanisms used, such as a linting tool. If images from an external source are used, explain the mechanisms in place to ensure this image can be trusted.
 -->
 
 # 10.9.5 Logs and Log Integration from Containers

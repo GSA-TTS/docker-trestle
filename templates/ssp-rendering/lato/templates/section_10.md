@@ -29,7 +29,7 @@ Ensure the following elements are incorporated into the data flow diagrams and n
 •	Identify the ports and protocols planned for use and whether the flows are encrypted.
 •	Note any access control mechanisms in place to restrict the flow of authorized traffic between defined and approved endpoints.
 •	Clearly identify anywhere Federal data is to be processed, stored, or transmitted
-•	 Document any data flow through approved external or internal Continuous Integration systems (CI) and code repositories in flow narratives and SSPP diagrams. Clearly identify data flows for privileged, non-privileged, and customer access.
+•	Document any data flow through approved external or internal Continuous Integration systems (CI) and code repositories in flow narratives and SSPP diagrams. Clearly identify data flows for privileged, non-privileged, and customer access.
 •	Include data flows associated with BOTs, as applicable, to ensure data flows used by BOTS are depicted.
 -->
 

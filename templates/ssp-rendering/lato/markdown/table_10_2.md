@@ -9,9 +9,9 @@ Instructions: In the table below, fill out the applicable details for any extern
 •	Is API over HTTPS: (Yes/No).
 •	API Connection Security: (OAuth 2.0, HTTP, Digital Certificates/ TLS Client, SAML, HMAC)
 •	API Connection Type:  It is important to recognize that vendors are inconsistent in their use of the term “API key”. It is often used as a stand-in for “tokens”, “codes”, “customer identifiers” depending on the product and usage. The following bullets cover the scenarios:
-‒	Inbound: An external system uses an API key to communicate with the CSP Infrastructure/Platform API to obtain information about or data from the vendor resources. This scenario is only applicable to external systems requiring connectivity inbound to the CSP.
-‒	Outbound: A CSP system uses an integration token to communicate with an external system. Sometimes the vendors refer to these as “API Keys”, but this is not an accurate description because they are simply a customer identifier.
-‒	Sync: An external system uses an API key to communicate with another external system
+  ‒	Inbound: An external system uses an API key to communicate with the CSP Infrastructure/Platform API to obtain information about or data from the vendor resources. This scenario is only applicable to external systems requiring connectivity inbound to the CSP.
+  ‒	Outbound: A CSP system uses an integration token to communicate with an external system. Sometimes the vendors refer to these as “API Keys”, but this is not an accurate description because they are simply a customer identifier.
+  ‒	Sync: An external system uses an API key to communicate with another external system
 •	Authentication and Authorization:  Describe how the service authenticates to the system. For example:  User ID and password, Secure Shell (SSH) key, token, SAML federation, etc.  (UID, PW, Key, Token, Federated, User ID + token, etc.).
 •	MFA:  Does the service connection require MFA? (Yes/No) If yes, which MFA vendor is being used?
 •	Role Based Access Control:  Is Role-based access control implemented for authentication? (Yes/No)

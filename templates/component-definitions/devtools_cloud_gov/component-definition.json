@@ -1,9 +1,9 @@
 {
   "component-definition": {
-    "uuid": "d8c6b192-f2c1-4434-8307-d8aed1826fe6",
+    "uuid": "6372eeac-753c-4d32-be21-9867a0f3e59a",
     "metadata": {
       "title": "Cloud.gov Best Practices for DevTools-based applications.",
-      "last-modified": "2024-08-15T01:28:29.538446+00:00",
+      "last-modified": "2024-08-28T17:13:07.537368+00:00",
       "version": "0.0.1",
       "oscal-version": "1.1.2"
     },
@@ -73,7 +73,9 @@
             "set-parameters": [
               {
                 "param-id": "gov.cloud.org-name",
-                "values": ["TODO - cloud.gov org name"]
+                "values": [
+                  "TODO - cloud.gov org name"
+                ]
               },
               {
                 "param-id": "gov.cloud.space-names",
@@ -98,7 +100,7 @@
                   {
                     "statement-id": "sc-7_smt.a",
                     "uuid": "7980db8d-2517-4c1d-a1ac-ab28bceefc35",
-                    "description": "SSH access to production spaces: {{ insert: param, gov.cloud.space-names }} within Cloud.gov organization {{ insert: param, gov.cloud.org-name }} has been disabled.",
+                    "description": "SSH access to production spaces has been disabled.",
                     "props": [
                       {
                         "name": "Rule_Id",
@@ -141,7 +143,7 @@
                   {
                     "statement-id": "si-4_smt.b",
                     "uuid": "30e83cb4-8214-491b-85d8-ce85b1a58e9d",
-                    "description": "SSH Access has been disabled to production spaces {{ insert: param, gov.cloud.space-names }} in organization {{ insert: param, gov.cloud.org-name }} to limit potential unauthorized use.",
+                    "description": "SSH Access has been disabled to production spaces to limit potential unauthorized use.",
                     "props": [
                       {
                         "name": "Rule_Id",

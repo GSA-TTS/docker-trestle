@@ -1,3 +1,4 @@
 working_dir/*
 templates/.trestle/cache/
 templates/.trestle/_trash/
+.venv

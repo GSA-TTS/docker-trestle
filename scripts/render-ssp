@@ -1,0 +1,76 @@
+#! /usr/bin/env bash
+
+usage="
+$0: generate a human-readable SSP document
+
+Usage:
+    $0 -h
+    $0 -t TEMPLATE_FILE [-o OUTPUT] [-n SYSTEM_NAME] [-p PROFILE_NAME]
+
+Options:
+-h: show help and exit
+-t: SSP Template file. Defaults to ssp-render/templates/gsa_template.md.jinja
+-o: Output markdown document. Defaults to ssp-render/SYSTEM_NAME_ssp.md
+-n: System Name. Defaults to 'system-name' value in trestle-config.yaml
+-p: Profile Name. Defaults to 'profile' value in trestle-config.yaml
+
+Notes:
+* Will load defaults from trestle-config.yaml file, if present
+"
+
+set -e
+
+source /app/bin/functions.sh
+system_name=$(yaml_parse_value 'trestle-config.yaml' 'system-name')
+profile=$(yaml_parse_value 'trestle-config.yaml' 'profile')
+template="ssp-render/templates/gsa_template.md.jinja"
+output=""
+
+while getopts "ht:o:n:p:" opt; do
+    case "$opt" in
+        t)
+            template=${OPTARG}
+            ;;
+        o)
+            output=${OPTARG}
+            ;;
+        p)
+            profile=${OPTARG}
+            ;;
+        n)
+            system_name=${OPTARG}
+            ;;
+        h)
+            echo "$usage"
+            exit 0
+            ;;
+    esac
+done
+
+if [ "$template" = "" ]; then
+    echo "$usage"
+    exit 1
+fi
+
+if [ "$profile" = "" ]; then
+    echo "$usage"
+    exit 1
+fi
+
+if [ "$system_name" = "" ]; then
+    echo "$usage"
+    exit 1
+fi
+
+if [ "$output" = "" ]; then
+    output="ssp-render/${system_name}_ssp.md"
+fi
+
+if [ ! -f "$template" ]; then
+    echo "The template file: $template could not be found"
+    exit 1
+fi
+
+trestle author jinja -i "$template" -ssp "$system_name" -p "$profile" -o "$output" -lut ssp-markdown/ssp_data.yaml -elp gsa -bf "[.]" -vap "$system_name Assigned:" -vnap "Assignment:"
+
+pandoc "$output" --from markdown -t html -s -o "$output.html" --metadata title="${system_name} SSP"

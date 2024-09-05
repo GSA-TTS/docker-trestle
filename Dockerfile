@@ -37,9 +37,15 @@ RUN adduser \
 # RUN --mount=type=cache,target=/root/.cache/pip \
 #     --mount=type=bind,source=requirements.txt,target=requirements.txt \
 #     python -m pip install -r requirements.txt
-ARG TRESTLE_VERSION=3.4.0
+# ARG TRESTLE_VERSION=3.4.0
+# RUN --mount=type=cache,target=/root/.cache/pip \
+#     python -m pip install "compliance-trestle==${TRESTLE_VERSION}"
+# RUN apt-get update && apt-get install -y pandoc && apt-get clean
+# remove below and uncomment above once more-jinja-tags branch has been merged and released
+RUN apt-get update && apt-get install -y git pandoc && apt-get clean
 RUN --mount=type=cache,target=/root/.cache/pip \
-    python -m pip install "compliance-trestle==${TRESTLE_VERSION}"
+    python -m pip install git+https://github.com/gsa-tts/compliance-trestle.git@77a6d5d0
+RUN apt-get remove -y git
 
 # Switch to the non-privileged user to run the application.
 USER appuser

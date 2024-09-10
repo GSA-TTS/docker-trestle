@@ -15,7 +15,7 @@ Options:
 -r: Regenerate UUIDs
 
 Notes:
-* Will load defaults from  trestle-config.yaml file, if present
+* Will load defaults from trestle-config.yaml file, if present
 "
 
 set -e
@@ -58,7 +58,7 @@ fi
 
 run_defaults="false"
 if [ -d "system-security-plans/$system_name" ]; then
-    (cd "system-security-plans/$system_name" && merge-ssp)
+    merge-ssp -n "$system_name"
 else
     echo "No existing SSP found, we will run gsa-defaults after assembling the SSP"
     run_defaults="true"
@@ -66,10 +66,7 @@ fi
 
 trestle author ssp-assemble -o "$system_name" -m "$markdown" "${optional_args[@]}"
 
-if [ -d "system-security-plans/$system_name" ]; then
-    ssp_path="system-security-plans/$system_name/system-security-plan.json"
-    if [ $run_defaults = "true" ]; then
-        trestle gsa-defaults -f $ssp_path
-    fi
-    split-ssp $ssp_path
+if [ $run_defaults = "true" ]; then
+    trestle gsa-defaults -f "system-security-plans/$system_name/system-security-plan.json"
 fi
+split-ssp -n "$system_name"

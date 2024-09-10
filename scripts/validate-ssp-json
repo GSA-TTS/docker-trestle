@@ -12,7 +12,7 @@ Options:
 -n: System Name. Defaults to 'system-name' value in trestle-config.yaml
 
 Notes:
-* Will load defaults from  trestle-config.yaml file, if present
+* Will load defaults from trestle-config.yaml file, if present
 "
 
 set -e

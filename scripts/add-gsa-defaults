@@ -12,7 +12,7 @@ Options:
 -n: System Name. Defaults to 'system-name' value in trestle-config.yaml
 
 Notes:
-* Will load defaults from  trestle-config.yaml file, if present
+* Will load defaults from trestle-config.yaml file, if present
 "
 
 set -e
@@ -38,15 +38,12 @@ if [ "$system_name" = "" ]; then
 fi
 
 if [ -d "system-security-plans/$system_name" ]; then
-    (cd "system-security-plans/$system_name" && merge-ssp)
+    merge-ssp -n "$system_name"
 else
     echo "No existing SSP found"
     exit 1
 fi
 
-ssp_path="system-security-plans/$system_name/system-security-plan.json"
-trestle gsa-defaults -f $ssp_path
+trestle gsa-defaults -f "system-security-plans/$system_name/system-security-plan.json"
 
-if [ -d "system-security-plans/$system_name" ]; then
-    split-ssp $ssp_path
-fi
+split-ssp -n $system_name

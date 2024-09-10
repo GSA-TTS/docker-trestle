@@ -1,0 +1,52 @@
+#! /usr/bin/env bash
+
+usage="
+$0: Add default values from gsa-defaults plugin into an OSCAL JSON SSP
+
+Usage:
+    $0 -h
+    $0 [-n SYSTEM_NAME]
+
+Options:
+-h: show help and exit
+-n: System Name. Defaults to 'system-name' value in trestle-config.yaml
+
+Notes:
+* Will load defaults from  trestle-config.yaml file, if present
+"
+
+set -e
+
+source /app/bin/functions.sh
+system_name=$(yaml_parse_value 'trestle-config.yaml' 'system-name')
+
+while getopts "hn:" opt; do
+    case "$opt" in
+        n)
+            system_name=${OPTARG}
+            ;;
+        h)
+            echo "$usage"
+            exit 0
+            ;;
+    esac
+done
+
+if [ "$system_name" = "" ]; then
+    echo "$usage"
+    exit 1
+fi
+
+if [ -d "system-security-plans/$system_name" ]; then
+    (cd "system-security-plans/$system_name" && merge-ssp)
+else
+    echo "No existing SSP found"
+    exit 1
+fi
+
+ssp_path="system-security-plans/$system_name/system-security-plan.json"
+trestle gsa-defaults -f $ssp_path
+
+if [ -d "system-security-plans/$system_name" ]; then
+    split-ssp $ssp_path
+fi

@@ -71,6 +71,9 @@ if [ ! -f "$template" ]; then
     exit 1
 fi
 
+echo "Validating ssp before attempting to render"
+validate-ssp-json -n "$system_name"
+
 trestle author jinja -i "$template" -ssp "$system_name" -p "$profile" -o "$output" -lut ssp-markdown/ssp_data.yaml -elp gsa -bf "[.]" -vap "$system_name Assigned:" -vnap "Assignment:"
 
 pandoc "$output" --from markdown -t html -s -o "$output.html" --metadata title="${system_name} SSP"

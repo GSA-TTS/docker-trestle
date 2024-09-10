@@ -1,0 +1,54 @@
+#! /usr/bin/env bash
+
+usage="
+$0: Validate OSCAL JSON SSP
+
+Usage:
+    $0 -h
+    $0 [-n SYSTEM_NAME]
+
+Options:
+-h: show help and exit
+-n: System Name. Defaults to 'system-name' value in trestle-config.yaml
+
+Notes:
+* Will load defaults from  trestle-config.yaml file, if present
+"
+
+set -e
+
+source /app/bin/functions.sh
+system_name=$(yaml_parse_value 'trestle-config.yaml' 'system-name')
+
+while getopts "hn:" opt; do
+    case "$opt" in
+        n)
+            system_name=${OPTARG}
+            ;;
+        h)
+            echo "$usage"
+            exit 0
+            ;;
+    esac
+done
+
+if [ "$system_name" = "" ]; then
+    echo "$usage"
+    exit 1
+fi
+
+if [ ! -d "system-security-plans/$system_name" ]; then
+    echo "No existing SSP found, skipping validation"
+    exit 0
+fi
+
+
+ssp_path="system-security-plans/$system_name/system-security-plan.json"
+set +e
+trestle gsa-validate -f $ssp_path
+status=$?
+if [ $status -ne 0 ]; then
+    echo "Try running 'add-gsa-defaults -n $system_name' to add default values to your SSP"
+fi
+
+exit $status

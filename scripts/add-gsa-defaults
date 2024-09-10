@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 usage="
-$0: Merge SSP OSCAL into a single file
+$0: Add default values from gsa-defaults plugin into an OSCAL JSON SSP
 
 Usage:
     $0 -h
@@ -37,13 +37,13 @@ if [ "$system_name" = "" ]; then
     exit 1
 fi
 
-ssp_path="system-security-plans/$system_name"
-
-if [ ! -d "$ssp_path" ]; then
-    echo "No existing SSP found."
-    echo "$usage"
+if [ -d "system-security-plans/$system_name" ]; then
+    merge-ssp -n "$system_name"
+else
+    echo "No existing SSP found"
     exit 1
 fi
 
-cd "$ssp_path"
-trestle merge -e "system-security-plan.*"
+trestle gsa-defaults -f "system-security-plans/$system_name/system-security-plan.json"
+
+split-ssp -n $system_name

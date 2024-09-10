@@ -92,7 +92,7 @@ And then edit the created files to contain the component definition.
 
 This step is automatically handled by the `assemble-ssp-json` script as long as that script is run from the trestle root.
 
-`split-ssp system-security-plans/SYSTEM_NAME/system-security-plan.json`
+`split-ssp -n SYSTEM_NAME`
 
 ### Templates:
 

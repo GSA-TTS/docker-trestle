@@ -64,9 +64,19 @@ Edit the files within `ssp-markdown` to populate data for the rendered SSP that 
 
 ### Render SSP
 
-Output the SSP as a markdown file and html file, both within `ssp-render`
+Output the SSP as a markdown file within `./ssp-render`
 
 `render-ssp`
+
+You can optionally use pandoc to transform the markdown file into a variety of formats. For example:
+
+#### PDF
+
+`docker run --rm --volume "/dir/with/rendered_ssp.md:/data" pandoc/latex rendered_ssp.md -o your-pdf-file-name.pdf`
+
+#### HTML
+
+`docker run --rm --volume "/dir/with/rendered_ssp.md:/data" pandoc/latex rendered_ssp.md -s -o your-html-file-name.html --metadata title="SSP Title"`
 
 ### Import profile into working space:
 

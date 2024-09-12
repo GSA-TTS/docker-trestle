@@ -46,7 +46,7 @@ echo "==========================================================================
 echo "Gap report for /app/docs/$markdown"
 echo "==========================================================================="
 
-result=`grep -R "Implementation Status:" /app/docs/"$markdown"/* | cut -d':' -f1,3 | cut -d'/' -f5`
+result=`grep -R "Implementation Status:" /app/docs/"$markdown"/* | cut -d':' -f1,3 | awk -F'/' '{print $NF}'`
 if [ "$status" != "" ]; then
   result=`grep $status <<< $result`
 elif [ "$ignored" != "" ]; then

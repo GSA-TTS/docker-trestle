@@ -39,8 +39,12 @@ Document Prepared By
 
 Document Revision History
 
+{% set prepared_by = ssp_interface.first_array_entry(ssp_interface.get_parties_for_role(ssp.metadata.responsible_parties, "prepared-by")) %}
 | Date | Comments | Version | Author |
 | ---- | -------- | ------- | ------ |
-| | | | |
+{% for revision in ssp_interface.safe_retrieval(ssp.metadata, 'revisions', []) %}
+{% set revision_prepared_by = ssp_interface.get_party_by_uuid(control_interface.get_prop(revision, 'prepared-by')) or prepared_by %}
+| {{ revision.last_modified.strftime('%Y-%m-%d') if revision.last_modified else '' }} | {{ revision.title }} | {{ revision.version }} | {{ revision_prepared_by.name }} |
+{% endfor %}
 
 <div class="pagebreak"></div>

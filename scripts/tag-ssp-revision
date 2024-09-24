@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+usage="
+$0: Tag a new revision entry
+
+Usage:
+  $0 -h
+  $0 -c CHANGES [-n SYSTEM_NAME] [-v VERSION] [-a AUTHOR_UUID] [-l VERSION_TIMESTAMP]
+
+Options:
+-h: show help and exit
+-c CHANGES: Summary of changes in this revision
+-n SYSTEM_NAME: Defaults to 'system-name' value in trestle-config.yaml
+-v VERSION: Version number to assign to this revision. Defaults to metadata.version
+-a AUTHOR_UUID: Author to associate with this revision. Defaults to main prepared-by responsible-party
+-l VERSION_TIMESTAMP: last-modified timestamp to assign to this revision. Defaults to metadata.last-modified
+
+Notes:
+* Will load defaults from trestle-config.yaml file, if present
+"
+
+set -e
+
+source /app/bin/functions.sh
+system_name=$(yaml_parse_value 'trestle-config.yaml' 'system-name')
+changes=""
+declare -a optional_args
+
+while getopts "hc:n:v:a:l:" opt; do
+  case "$opt" in
+    c)
+      changes=${OPTARG}
+      ;;
+    n)
+      system_name=${OPTARG}
+      ;;
+    v)
+      optional_args+=("-vn" ${OPTARG})
+      ;;
+    a)
+      optional_args+=("-a" ${OPTARG})
+      ;;
+    l)
+      optional_args+=("-l" ${OPTARG})
+      ;;
+    h)
+      echo "$usage"
+      exit 0
+      ;;
+  esac
+done
+
+if [ "$changes" = "" ] || [ "$system_name" = "" ]; then
+  echo "$usage"
+  exit 1
+fi
+
+trestle tag-revision -f "system-security-plans/$system_name/system-security-plan/metadata.json" -c "$changes" "${optional_args[@]}"

@@ -21,7 +21,7 @@ For docker-trestle, the `control-implementation` section is maintained and edite
 | `version` | Version of the SSP document. Revise whenever submitting final doc for approvals |
 | `oscal-version` | Version of OSCAL in use. trestle currently supports `1.1.2` |
 | `revisions` | Version history of the document. Used to populate `Document Revision History` table in the templates |
-| `roles` | Names of roles referenced within `responsible-parties` lists. |
+| `roles` | Names of roles referenced within `responsible-parties` lists |
 | `parties` | People and organizations involved with the creation of the System and SSPP |
 | `responsible-parties` | Mappings of parties to roles |
 

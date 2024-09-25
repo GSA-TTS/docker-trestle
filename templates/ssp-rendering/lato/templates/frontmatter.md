@@ -16,20 +16,18 @@
 Document Prepared By
 <table>
 <tbody>
-{% for party in ssp_interface.get_parties_for_role(ssp.metadata.responsible_parties, "prepared-by") %}
+{% for party in ssp.metadata.responsible_parties | parties_for_role("prepared-by", ssp) %}
 <tr>
 <th scope="row">{{ party.type.value.title() }} Name</th><td>{{ party.name }}</td>
 </tr>
+{% set address = party.addresses | first_or_none %}
+{% for addr_line in address.addr_lines | as_list %}
 <tr>
-{% set address = ssp_interface.first_array_entry(party.addresses) %}
-{% set addr_lines = ssp_interface.safe_retrieval(address, "addr_lines", []) %}
-<th scope="row">Address Line 1</th><td>{{ addr_lines[0] }}</td>
+<th scope="row">Address Line {{ loop.index }}</th><td>{{ addr_line }}</td>
 </tr>
+{% endfor %}
 <tr>
-<th scope="row">Address Line 2</th><td>{{ addr_lines[1] }}</td>
-</tr>
-<tr>
-<th scope="row">City, State Zip</th><td>{{ ssp_interface.safe_retrieval(address, "city") }}, {{ ssp_interface.safe_retrieval(address, "state") }} {{ ssp_interface.safe_retrieval(address, "postal_code") }}</td>
+<th scope="row">City, State Zip</th><td>{{ address.city }}, {{ address.state }} {{ address.postal_code }}</td>
 </tr>
 {% endfor %}
 </tbody>
@@ -39,11 +37,11 @@ Document Prepared By
 
 Document Revision History
 
-{% set prepared_by = ssp_interface.first_array_entry(ssp_interface.get_parties_for_role(ssp.metadata.responsible_parties, "prepared-by")) %}
+{% set prepared_by = ssp.metadata.responsible_parties | parties_for_role("prepared-by", ssp) | first_or_none %}
 | Date | Comments | Version | Author |
 | ---- | -------- | ------- | ------ |
-{% for revision in ssp_interface.safe_retrieval(ssp.metadata, 'revisions', []) %}
-{% set revision_prepared_by = ssp_interface.get_party_by_uuid(control_interface.get_prop(revision, 'prepared-by')) or prepared_by %}
+{% for revision in ssp.metadata.revisions | as_list %}
+{% set revision_prepared_by = control_interface.get_prop(revision, "prepared-by") | get_party(ssp) | get_default(prepared_by) %}
 | {{ revision.last_modified.strftime('%Y-%m-%d') if revision.last_modified else '' }} | {{ revision.title }} | {{ revision.version }} | {{ revision_prepared_by.name }} |
 {% endfor %}
 

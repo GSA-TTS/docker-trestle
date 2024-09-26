@@ -35,8 +35,8 @@ Ensure the following elements are incorporated into the data flow diagrams and n
 
 The Data Flow Diagram (DFD) below maps out the flow of information traveling within an information system and between infrormation systems.
 
-{% for diagram in ssp_interface.safe_retrieval(ssp.system_characteristics.data_flow, 'diagrams', []) %}
-![{{diagram.caption}}]({{ ssp_interface.get_diagram_href(diagram) }})
+{% for diagram in ssp.system_characteristics.data_flow.diagrams | as_list %}
+![{{diagram.caption}}]({{ diagram | diagram_href }})
 <br/>Figure 10-{{loop.index}}. Data Flow Diagram
 {% endfor %}
 

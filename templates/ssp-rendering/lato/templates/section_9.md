@@ -59,7 +59,7 @@ The network architecture must follow the criteria listed in CIO-IT Security-19-9
 
 The following architectural diagram provides a visual depiction of the major hardware components of the {{ ssp.system_characteristics.system_name_short }}.
 
-{% for diagram in ssp_interface.safe_retrieval(ssp.system_characteristics.authorization_boundary, 'diagrams', []) %}
-![{{diagram.caption}}]({{ ssp_interface.get_diagram_href(diagram) }})
+{% for diagram in ssp.system_characteristics.authorization_boundary.diagrams | as_list %}
+![{{diagram.caption}}]({{ diagram | diagram_href }})
 <br/>Figure 9-{{loop.index}}. Network Diagram
 {% endfor %}

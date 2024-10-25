@@ -1,3 +1,2 @@
-# switch back to a released version of compliance-trestle once the jinja filters/plugins work is merged and released
-compliance-trestle @ git+https://github.com/gsa-tts/compliance-trestle.git@576c4369
+compliance-trestle == 3.5.0
 compliance-trestle-gsa @ git+https://github.com/GSA-TTS/compliance-trestle-gsa.git@39ce4167

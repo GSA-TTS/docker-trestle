@@ -5,13 +5,14 @@ $0: Get rough list of implementation statuses from control markdown files
 
 Usage:
   $0 -h
-  $0 [-s INCLUDE_STATUS_LIST] [-i IGNORED_STATUS_LIST] [-m MARKDOWN_DIR]
+  $0 [-s INCLUDE_STATUS_LIST] [-i IGNORED_STATUS_LIST] [-m MARKDOWN_DIR] [-f]
 
 Options:
 -h: show help and exit
 -s: status names to include, given as comma separated list. Defaults to all controls
 -i: status names to ignore, given as comma separated list.
 -m: Directory containing markdown files. Defaults to 'markdown' value in config, or 'control-statements'
+-f: Summarize counts by control family
 
 Notes:
 * passing '-s' will take precedence over '-i'
@@ -23,9 +24,13 @@ source /app/bin/functions.sh
 markdown=$(yaml_parse_value 'trestle-config.yaml' 'markdown' 'control-statements')
 ignored=""
 status=""
+summarize_by_family="false"
 
-while getopts "hs:i:m:" opt; do
+while getopts "hfs:i:m:" opt; do
   case "$opt" in
+    f)
+      summarize_by_family="true"
+      ;;
     s)
       status=`sed s/,/"\\\\\|"/g <<< ${OPTARG}`
       ;;
@@ -52,8 +57,11 @@ if [ "$status" != "" ]; then
 elif [ "$ignored" != "" ]; then
   result=`grep -v $ignored <<< $result`
 fi
-
 cat <<< $result
+
+if [ "$summarize_by_family" = "true" ]; then
+  result=`awk -F'[-:]' '{print $1 $3}' <<< $result`
+fi
 echo "==========================================================================="
 echo "$(wc -l <<< $result) controls found"
 cut -d':' -f2 <<< $result | sort | uniq -c

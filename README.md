@@ -17,6 +17,10 @@ This repository contains the source code for the `ghcr.io/gsa-tts/trestle` Docke
 1. [Update non-OSCAL SSP sections](#update-non-oscal-ssp-files)
 1. [Render a human-readable SSPP (TODO: within a CI workflow)](#render-ssp)
 
+### Use in a GitLab Runner
+
+(beta) We're working on a `-glr` variant image for use within [gitlab-runner-cloudgov](https://github.com/gsa-tts/gitlab-runner-cloudgov)
+
 ### Pull down the trestle image and initialize a compliance trestle project
 
 Prerequisite: `$(pwd)/compliance` directory exists and is where you want to store all compliance artifacts

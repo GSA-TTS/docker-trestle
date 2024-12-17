@@ -19,6 +19,8 @@ jobs:
       # This is used to complete the identity challenge
       # with sigstore/fulcio when running outside of PRs.
       id-token: write
+    outputs:
+      base_image: ${{ fromJson(steps.meta.outputs.json).tags[2] }} # tags[2] should be the sha tag
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -45,10 +47,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get today's date
-        id: today
-        run: echo "date=`date +'%Y%m%d'`" >> $GITHUB_OUTPUT
-
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
       - name: Extract Docker metadata
@@ -58,7 +56,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: latest=true
           tags: |
-            type=raw,value=${{ steps.today.outputs.date }},priority=850
+            type=raw,value={{date 'YYYYMMDD'}},priority=850
             type=ref,event=branch
             type=sha
 
@@ -126,10 +124,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get today's date
-        id: today
-        run: echo "date=`date +'%Y%m%d'`" >> $GITHUB_OUTPUT
-
       - name: Extract Docker metadata - glr variant
         id: meta-glr
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
@@ -137,10 +131,10 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: latest=false
           tags: |
-            type=raw,value=${{ steps.today.outputs.date }}-glr,priority=850
-            type=raw,value=latest-glr,priority=900
+            type=raw,value={{date 'YYYYMMDD'}}-glr,priority=850
             type=raw,value={{branch}}-glr,priority=600
             type=raw,value={{sha}}-glr,priority=100
+            type=raw,value=latest-glr,priority=90
 
       - name: Build and push Docker image - glr variant
         id: build-and-push-glr
@@ -148,7 +142,7 @@ jobs:
         with:
           context: .
           file: Dockerfile.glr
-          build-args: BASE_VERSION=${{ steps.today.outputs.date }}
+          build-args: BASE_IMAGE=${{ needs.publish.outputs.base_image }}
           push: true
           tags: ${{ steps.meta-glr.outputs.tags }}
           labels: ${{ steps.meta-glr.outputs.labels }}

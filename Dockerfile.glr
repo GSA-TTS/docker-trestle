@@ -1,6 +1,6 @@
 # This file builds docker-trestle for use within a GitLab Runner
-ARG BASE_VERSION=latest
-FROM ghcr.io/gsa-tts/trestle:${BASE_VERSION} AS base
+ARG BASE_IMAGE=ghcr.io/gsa-tts/trestle:latest
+FROM ${BASE_IMAGE} AS base
 
 # Use the root user so we can run our install_dependencies scripts from runner manager
 USER root

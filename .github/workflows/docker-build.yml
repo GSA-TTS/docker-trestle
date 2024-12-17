@@ -24,14 +24,13 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: latest=false
-          tags: type=raw,value=${{ github.sha }}
+          tags: type=sha
 
       - name: Build Docker image
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
           context: .
           push: false
-          # load: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
@@ -48,8 +47,7 @@ jobs:
         with:
           context: .
           file: Dockerfile.glr
-          build-args: BASE_VERSION=${{ github.sha }}
+          build-args: BASE_IMAGE=${{ fromJson(steps.meta.outputs.json).tags[0] }}
           push: false
-          # load: true
           tags: ${{ steps.meta-glr.outputs.tags }}
           labels: ${{ steps.meta-glr.outputs.labels }}

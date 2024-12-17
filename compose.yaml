@@ -6,6 +6,12 @@ services:
       - ./working_dir:/app/docs
       - ./templates:/app/templates
 
+  # a helper glr variant to help debug any issues
+  glr:
+    build:
+      context: .
+      dockerfile: Dockerfile.glr
+
   # a helper pandoc just to easily properly set the volume for local testing.
   # use with `docker compose run --rm pandoc <insert pandoc args here>`
   pandoc:

@@ -75,3 +75,6 @@ echo "Validating ssp before attempting to render"
 validate-ssp-json -n "$system_name"
 
 trestle author jinja -i "$template" -ssp "$system_name" -p "$profile" -o "$output" -lut ssp-markdown/ssp_data.yaml -elp gsa -bf "[.]" -vap "$system_name Assigned:" -vnap "Assignment:"
+
+# strip out FedRAMP header text
+sed -e 's/### FedRamp Control Origination/### Control Origination/g' -i "$output"

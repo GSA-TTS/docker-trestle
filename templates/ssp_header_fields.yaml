@@ -1,0 +1,8 @@
+x-trestle-add-props:
+  - name: control-origination
+    value: REPLACE_ME
+control-origination-options:
+  - "Inherited from:"
+  - "GSA Common Control"
+  - "Hybrid Control shared with:"
+  - "System Specific Control"

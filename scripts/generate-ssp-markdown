@@ -69,4 +69,4 @@ if [ "$leveraged_ssp" != "" ]; then
     optional_args+=("-ls" $leveraged_ssp)
 fi
 
-trestle author ssp-generate -p "$profile" -o "$markdown" -iap "${optional_args[@]}"
+trestle author ssp-generate -p "$profile" -o "$markdown" -iap -y /app/templates/ssp_header_fields.yaml "${optional_args[@]}"

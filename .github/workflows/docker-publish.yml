@@ -133,7 +133,7 @@ jobs:
           tags: |
             type=raw,value={{date 'YYYYMMDD'}}-glr,priority=850
             type=raw,value={{branch}}-glr,priority=600
-            type=raw,value={{sha}}-glr,priority=100
+            type=raw,value=sha-{{sha}}-glr,priority=100
             type=raw,value=latest-glr,priority=90
 
       - name: Build and push Docker image - glr variant

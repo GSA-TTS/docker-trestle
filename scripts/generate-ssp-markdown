@@ -44,6 +44,7 @@ while getopts "hp:c:s:m:f" opt; do
             ;;
         f)
             optional_args+=("-fo")
+            optional_args+=("-y" "/app/templates/ssp_header_fields.yaml")
             ;;
         h)
             echo "$usage"
@@ -61,6 +62,10 @@ if [ ! -d "profiles/$profile" ]; then
     copy-profile "$profile"
 fi
 
+if [ ! -d "$markdown" ]; then
+    optional_args+=("-y" "/app/templates/ssp_header_fields.yaml")
+fi
+
 if [ "$components" != "" ]; then
     optional_args+=("-cd" $components)
 fi
@@ -69,4 +74,4 @@ if [ "$leveraged_ssp" != "" ]; then
     optional_args+=("-ls" $leveraged_ssp)
 fi
 
-trestle author ssp-generate -p "$profile" -o "$markdown" -iap -y /app/templates/ssp_header_fields.yaml "${optional_args[@]}"
+trestle author ssp-generate -p "$profile" -o "$markdown" -iap "${optional_args[@]}"

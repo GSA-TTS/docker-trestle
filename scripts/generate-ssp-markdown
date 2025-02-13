@@ -5,7 +5,7 @@ $0: Generate control statement markdown for an SSP
 
 Usage:
     $0 -h
-    $0 [-p PROFILE_NAME] [-c COMMA_SEP_COMPDEFS] [-s LEVERAGED_SSP] [-m MARKDOWN_DIR] [-f]
+    $0 [-p PROFILE_NAME] [-c COMMA_SEP_COMPDEFS] [-s LEVERAGED_SSP] [-m MARKDOWN_DIR] [-f] [--] [TRESTLE_ARGS]
 
 Options:
 -h: show help and exit
@@ -14,6 +14,7 @@ Options:
 -s: SSP to leverage as local name or URL. Defaults to 'leveraged-ssp' value in trestle-config.yaml
 -m: Directory to put markdown files in. Defaults to 'markdown' value in config, or 'control-statements'
 -f: Force overwrite
+TRESTLE_ARGS: are passed as-is to trestle.
 
 Notes:
 * Will load defaults from trestle-config.yaml file, if present
@@ -27,23 +28,30 @@ markdown=$(yaml_parse_value 'trestle-config.yaml' 'markdown' 'control-statements
 profile=$(yaml_parse_value 'trestle-config.yaml' 'profile')
 leveraged_ssp=$(yaml_parse_value 'trestle-config.yaml' 'leveraged-ssp')
 components=$(yaml_comma_sep_components 'trestle-config.yaml')
+args_to_shift=0
 
-while getopts "hp:c:s:m:f" opt; do
+while getopts ":hp:c:s:m:f" opt; do
     case "$opt" in
         p)
             profile=${OPTARG}
+            args_to_shift=$((args_to_shift + 2))
             ;;
         c)
             components=${OPTARG}
+            args_to_shift=$((args_to_shift + 2))
             ;;
         s)
             leveraged_ssp=${OPTARG}
+            args_to_shift=$((args_to_shift + 2))
             ;;
         m)
             markdown=${OPTARG}
+            args_to_shift=$((args_to_shift + 2))
             ;;
         f)
             optional_args+=("-fo")
+            optional_args+=("-y" "/app/templates/ssp_header_fields.yaml")
+            args_to_shift=$((args_to_shift + 1))
             ;;
         h)
             echo "$usage"
@@ -57,8 +65,17 @@ if [ "$profile" = "" ]; then
     exit 1
 fi
 
+shift $args_to_shift
+if [ "$1" = "--" ]; then
+    shift 1
+fi
+
 if [ ! -d "profiles/$profile" ]; then
     copy-profile "$profile"
+fi
+
+if [ ! -d "$markdown" ]; then
+    optional_args+=("-y" "/app/templates/ssp_header_fields.yaml")
 fi
 
 if [ "$components" != "" ]; then
@@ -69,4 +86,4 @@ if [ "$leveraged_ssp" != "" ]; then
     optional_args+=("-ls" $leveraged_ssp)
 fi
 
-trestle author ssp-generate -p "$profile" -o "$markdown" -iap -y /app/templates/ssp_header_fields.yaml "${optional_args[@]}"
+trestle author ssp-generate -p "$profile" -o "$markdown" -iap "${optional_args[@]}" "$@"

@@ -19,7 +19,14 @@ This repository contains the source code for the `ghcr.io/gsa-tts/trestle` Docke
 
 ### Use in a GitLab Runner
 
-(beta) We're working on a `-glr` variant image for use within [gitlab-runner-cloudgov](https://github.com/gsa-tts/gitlab-runner-cloudgov)
+`docker-trestle` will work out of the box with cloud.gov Workspace runners as long as you use the following config in your trestle jobs:
+
+```
+before_script:
+  - cd path/to/trestle_root
+  - export PATH="/app/bin:$PATH"
+```
+
 
 ### Pull down the trestle image and initialize a compliance trestle project
 

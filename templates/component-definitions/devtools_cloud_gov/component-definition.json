@@ -1,10 +1,10 @@
 {
   "component-definition": {
-    "uuid": "6372eeac-753c-4d32-be21-9867a0f3e59a",
+    "uuid": "b178e2be-caff-4dd3-8cd1-afb0da71db49",
     "metadata": {
       "title": "Cloud.gov Best Practices for DevTools-based applications.",
-      "last-modified": "2024-08-28T17:13:07.537368+00:00",
-      "version": "0.0.1",
+      "last-modified": "2025-06-03T14:49:00.269121+00:00",
+      "version": "0.0.2",
       "oscal-version": "1.1.2"
     },
     "components": [
@@ -63,6 +63,16 @@
             "name": "Parameter_Value_Alternatives",
             "value": "TODO - update to production org",
             "remarks": "rule_ssh_access_disabled_2"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "user-report-current",
+            "remarks": "rule_user_report_current"
+          },
+          {
+            "name": "Rule_Description",
+            "value": "A user report is run on an ongoing basis",
+            "remarks": "rule_user_report_current"
           }
         ],
         "control-implementations": [
@@ -86,6 +96,34 @@
               }
             ],
             "implemented-requirements": [
+              {
+                "uuid": "37db705e-51d7-44eb-889d-68cfcf8e2b36",
+                "control-id": "ac-2",
+                "description": "",
+                "props": [
+                  {
+                    "name": "implementation-status",
+                    "value": "planned"
+                  }
+                ],
+                "statements": [
+                  {
+                    "statement-id": "ac-2_smt.j",
+                    "uuid": "08c18aff-6e71-4dfb-ab4f-8a274eb66e79",
+                    "description": "A user report is run on an annual basis comparing the list of users with access to the system against requirements for each type of account.",
+                    "props": [
+                      {
+                        "name": "Rule_Id",
+                        "value": "user-report-current"
+                      },
+                      {
+                        "name": "implementation-status",
+                        "value": "implemented"
+                      }
+                    ]
+                  }
+                ]
+              },
               {
                 "uuid": "1b961b4e-96ea-4ef1-a48b-d21386949450",
                 "control-id": "sc-7",
@@ -181,6 +219,21 @@
             "name": "Check_Description",
             "value": "Validate that ssh access has been disabled to gov.cloud.space-names spaces",
             "remarks": "rule_ssh_access_disabled"
+          },
+          {
+            "name": "Rule_Id",
+            "value": "user-report-current",
+            "remarks": "rule_user_report_current"
+          },
+          {
+            "name": "Check_Id",
+            "value": "checks.test_governed_reports.GovernedReportsCheck.test_governed_documents",
+            "remarks": "rule_user_report_current"
+          },
+          {
+            "name": "Check_Description",
+            "value": "Validate that the user report has been run on the specified frequency",
+            "remarks": "rule_user_report_current"
           }
         ],
         "control-implementations": [
@@ -197,6 +250,10 @@
                   {
                     "name": "Rule_Id",
                     "value": "ssh-access-disabled"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "value": "user-report-current"
                   }
                 ]
               }

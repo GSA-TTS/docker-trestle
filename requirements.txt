@@ -1,2 +1,2 @@
-compliance-trestle == 3.8.1
+compliance-trestle == 3.9.0
 compliance-trestle-gsa @ git+https://github.com/GSA-TTS/compliance-trestle-gsa.git@39ce4167

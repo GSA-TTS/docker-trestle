@@ -1,24 +1,24 @@
 # 10 System Environment
 
-{% md_clean_include "ssp-markdown/system_environment_description.md" heading_level=2 %}
+{% md_clean_include "ssp-markdown/10.system_environment_description.md" heading_level=2 %}
 
 ## 10.1 Asset Inventory
 
 The following table identifies the virtual and physical components of the {{ ssp.system_characteristics.system_name_short }}.
 
-{% md_clean_include "ssp-markdown/table_10_1.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/10.1.table_10_1.md" heading_level=3 %}
 
 ## 10.2 External Services
 
 The following table(s) identifies the external services supporting {{ ssp.system_characteristics.system_name_short }}.
 
-{% md_clean_include "ssp-markdown/table_10_2.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/10.2.table_10_2.md" heading_level=3 %}
 
 ## 10.3 Software Inventory
 
 The following table lists the principal software components (e.g., operating system, database, web software, etc.) for {{ ssp.system_characteristics.system_name_short }}.
 
-{% md_clean_include "ssp-markdown/table_10_3.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/10.3.table_10_3.md" heading_level=3 %}
 
 ## 10.4 Data Flow
 
@@ -42,24 +42,24 @@ The Data Flow Diagram (DFD) below maps out the flow of information traveling wit
 
 ## 10.5 System Data Nature
 
-{% md_clean_include "ssp-markdown/system_data_nature.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/10.5.system_data_nature.md" heading_level=3 %}
 
 ## 10.6 Ports, Protocols, and Services
 
-{% md_clean_include "ssp-markdown/table_10_4.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/10.6.table_10_4.md" heading_level=3 %}
 
 ## 10.7 Transition to IPv6
 
-{% md_clean_include "ssp-markdown/ipv6.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/10.7.ipv6.md" heading_level=3 %}
 
 ## 10.8 DevOps/DevSecOps Management
 
-{% md_clean_include "ssp-markdown/devsecops.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/10.8.devsecops.md" heading_level=3 %}
 
 ## 10.9 Container-Based Workload Management
 
-{% md_clean_include "ssp-markdown/containers.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/10.9.containers.md" heading_level=3 %}
 
 ## 10.10 AWS Management
 
-{% md_clean_include "ssp-markdown/aws.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/10.10.aws.md" heading_level=3 %}

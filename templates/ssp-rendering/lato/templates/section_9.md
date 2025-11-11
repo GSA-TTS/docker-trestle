@@ -12,7 +12,7 @@ Instructions: The general information system description must consist of the fol
 
 Physically, the {{ ssp.system_characteristics.system_name_short }} environment resides at the locations identified below.
 
-{% md_clean_include "ssp-markdown/table_9_1.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/9.1.table_9_1.md" heading_level=3 %}
 
 ## 9.2 Information System Components and Boundaries
 
@@ -24,19 +24,19 @@ The components of the {{ ssp.system_characteristics.system_name_short }} environ
 
 The controls described in Section 13 of this document may apply to some or all of these asset types.
 
-{% md_clean_include "ssp-markdown/table_9_2.md" %}
+{% md_clean_include "ssp-markdown/9.2.table_9_2.md" %}
 
 ## 9.3 Information System Web Site URL Addresses
 
 The following table lists the web site URL addresses for {{ ssp.system_characteristics.system_name_short }}.
 
-{% md_clean_include "ssp-markdown/table_9_3.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/9.3.table_9_3.md" heading_level=3 %}
 
 ## 9.4 Types of Users
 
-{% md_clean_include "ssp-markdown/table_9_4.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/9.4.table_9_4.md" heading_level=3 %}
 
-{% md_clean_include "ssp-markdown/user_access_descriptions.md" heading_level=3 %}
+{% md_clean_include "ssp-markdown/9.4.user_access_descriptions.md" heading_level=3 %}
 
 ## 9.5 Network Architecture
 

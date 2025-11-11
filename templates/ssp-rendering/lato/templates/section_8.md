@@ -30,4 +30,4 @@ Table 8-1. Systems Providing Controls
 
 {{ ssp.system_characteristics.system_name_short }} provides the controls (common or hybrid) listed to the systems identified in the following table. List any controls provided to any systems and identify if it is provided as a Common or Hybrid control.
 
-{% md_clean_include 'ssp-markdown/table_8_2.md' heading_level=3 %}
+{% md_clean_include 'ssp-markdown/8.2.table_8_2.md' heading_level=3 %}

@@ -5,5 +5,5 @@ Instructions: List data covering all interconnected systems in the two tables in
 Note: For system interconnections with an IEA/ISA/MOU, additional information regarding connection may be found in the associated IEA/ISA/MOU.
 -->
 
-{% md_clean_include "ssp-markdown/table_11_1.md" heading_level=2 %}
-{% md_clean_include "ssp-markdown/table_11_2.md" heading_level=2 %}
+{% md_clean_include "ssp-markdown/11.1.table_11_1.md" heading_level=2 %}
+{% md_clean_include "ssp-markdown/11.2.table_11_2.md" heading_level=2 %}

@@ -44,7 +44,19 @@
               "si-4.4",
               "si-4.5",
               "si-7",
-              "si-10"
+              "si-10",
+              "pt-2",
+              "pt-3",
+              "pt-4",
+              "pt-5",
+              "pt-5.2",
+              "pt-6",
+              "pt-6.1",
+              "pt-6.2",
+              "pt-7",
+              "pt-7.1",
+              "pt-7.2",
+              "pt-8"
             ]
           }
         ]
@@ -972,6 +984,162 @@
         },
         {
           "param-id": "si-7_prm_2"
+        },
+        {
+          "param-id": "pt-02_odp.01",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "authority as defined in the SORN and/or PIA"
+          ]
+        },
+        {
+          "param-id": "pt-02_odp.02",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "processing as defined in the SORN and/or PIA"
+          ]
+        },
+        {
+          "param-id": "pt-02_odp.03",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "processing as defined in the SORN and/or PIA"
+          ]
+        },
+        {
+          "param-id": "pt-03_odp.01",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "purposes in the PIA and/or SORN"
+          ]
+        },
+        {
+          "param-id": "pt-03_odp.02",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "processing"
+          ]
+        },
+        {
+          "param-id": "pt-03_odp.03",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "PTA, PIA and SORN processes"
+          ]
+        },
+        {
+          "param-id": "pt-03_odp.04",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "CIO Order 1878.3"
+          ]
+        },
+        {
+          "param-id": "pt-04_odp",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "Privacy Act statements"
+          ]
+        },
+        {
+          "param-id": "pt-05_odp.01",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "whenever PII is collected, updated or disclosed"
+          ]
+        },
+        {
+          "param-id": "pt-05_odp.02",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "information in the PII infographic available at the InSite Privacy PII page"
+          ]
+        },
+        {
+          "param-id": "pt-06.01_odp",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "at any major change"
+          ]
+        },
+        {
+          "param-id": "pt-06.02_odp",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "at any significant change"
+          ]
+        },
+        {
+          "param-id": "pt-07_odp",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "FIPS-validated encryption"
+          ]
         }
       ],
       "alters": []

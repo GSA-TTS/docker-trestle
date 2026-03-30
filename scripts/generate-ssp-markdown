@@ -5,7 +5,7 @@ $0: Generate control statement markdown for an SSP
 
 Usage:
     $0 -h
-    $0 [-p PROFILE_NAME] [-c COMMA_SEP_COMPDEFS] [-s LEVERAGED_SSP] [-m MARKDOWN_DIR] [-f] [--] [TRESTLE_ARGS]
+    $0 [-p PROFILE_NAME] [-c COMMA_SEP_COMPDEFS] [-s LEVERAGED_SSP] [-m MARKDOWN_DIR] [-f] [-n] [--] [TRESTLE_ARGS]
 
 Options:
 -h: show help and exit
@@ -14,6 +14,8 @@ Options:
 -s: SSP to leverage as local name or URL. Defaults to 'leveraged-ssp' value in trestle-config.yaml
 -m: Directory to put markdown files in. Defaults to 'markdown' value in config, or 'control-statements'
 -f: Force overwrite
+-n: New controls only. Generate markdown only for controls that don't already have files.
+    Existing control statement files are preserved exactly as-is.
 TRESTLE_ARGS: are passed as-is to trestle.
 
 Notes:
@@ -29,8 +31,9 @@ profile=$(yaml_parse_value 'trestle-config.yaml' 'profile')
 leveraged_ssp=$(yaml_parse_value 'trestle-config.yaml' 'leveraged-ssp')
 components=$(yaml_comma_sep_components 'trestle-config.yaml')
 args_to_shift=0
+new_only=false
 
-while getopts ":hp:c:s:m:f" opt; do
+while getopts ":hp:c:s:m:fn" opt; do
     case "$opt" in
         p)
             profile=${OPTARG}
@@ -51,6 +54,10 @@ while getopts ":hp:c:s:m:f" opt; do
         f)
             optional_args+=("-fo")
             optional_args+=("-y" "/app/templates/ssp_header_fields.yaml")
+            args_to_shift=$((args_to_shift + 1))
+            ;;
+        n)
+            new_only=true
             args_to_shift=$((args_to_shift + 1))
             ;;
         h)
@@ -86,4 +93,16 @@ if [ "$leveraged_ssp" != "" ]; then
     optional_args+=("-ls" $leveraged_ssp)
 fi
 
+# If -n flag set, back up existing markdown files before generation
+if [ "$new_only" = true ] && [ -d "$markdown" ]; then
+    backup_dir=$(mktemp -d)
+    cp -a "$markdown/." "$backup_dir/"
+fi
+
 trestle author ssp-generate -p "$profile" -o "$markdown" -iap "${optional_args[@]}" "$@"
+
+# If -n flag set, restore pre-existing files from backup
+if [ "$new_only" = true ] && [ -d "${backup_dir:-}" ]; then
+    cp -a "$backup_dir/." "$markdown/"
+    rm -rf "$backup_dir"
+fi

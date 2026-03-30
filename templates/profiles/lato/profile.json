@@ -45,6 +45,12 @@
               "si-4.5",
               "si-7",
               "si-10",
+              "ac-3.14",
+              "at-3.5",
+              "au-3.3",
+              "ir-2.3",
+              "ir-8.1",
+              "mp-6",
               "pt-2",
               "pt-3",
               "pt-4",
@@ -56,7 +62,15 @@
               "pt-7",
               "pt-7.1",
               "pt-7.2",
-              "pt-8"
+              "pt-8",
+              "ra-8",
+              "sa-8.33",
+              "sc-7.24",
+              "si-12.1",
+              "si-12.2",
+              "si-18",
+              "si-18.4",
+              "si-19"
             ]
           }
         ]
@@ -1139,6 +1153,282 @@
           ],
           "values": [
             "FIPS-validated encryption"
+          ]
+        },
+        {
+          "param-id": "ac-03.14_odp.01",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "a self service mechanism or use GSA's Privacy Act Request for Access process"
+          ]
+        },
+        {
+          "param-id": "ac-03.14_odp.02",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "elements as defined in the GSA PII Rules Matrix"
+          ]
+        },
+        {
+          "param-id": "at-03.05_odp.01",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "all personnel with a GSA Account"
+          ]
+        },
+        {
+          "param-id": "at-03.05_odp.02",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "annually"
+          ]
+        },
+        {
+          "param-id": "au-03.03_odp",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "no PII to be included in audit records"
+          ]
+        },
+        {
+          "param-id": "mp-06_odp.01",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "all information system media, both digital and non-digital"
+          ]
+        },
+        {
+          "param-id": "mp-06_odp.02",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "all information system media, both digital and non-digital"
+          ]
+        },
+        {
+          "param-id": "mp-06_odp.03",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "all information system media, both digital and non-digital"
+          ]
+        },
+        {
+          "param-id": "mp-06_odp.04",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "techniques and methods described in IT Security Procedural Guide: Media Protection (MP), CIO-IT Security-06-32"
+          ]
+        },
+        {
+          "param-id": "mp-06_odp.05",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "techniques and methods described in IT Security Procedural Guide: Media Protection (MP), CIO-IT Security-06-32"
+          ]
+        },
+        {
+          "param-id": "mp-06_odp.06",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "techniques and methods described in IT Security Procedural Guide: Media Protection (MP), CIO-IT Security-06-32"
+          ]
+        },
+        {
+          "param-id": "sa-08.33_odp",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "PTA, PIA, SORN, and records schedules"
+          ]
+        },
+        {
+          "param-id": "sc-07.24_odp",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "processing rules only as authorized by the Privacy Act of 1974, the relevant SORN, GSA's Data Release Policy and any other applicable law, regulation, or government-wide policy"
+          ]
+        },
+        {
+          "param-id": "si-12.01_odp",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "elements as defined in the SORN"
+          ]
+        },
+        {
+          "param-id": "si-12.02_odp.01",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "this policy/process is under development and considers the sensitivity of PII, number of individuals and/or records in the research, testing or training"
+          ]
+        },
+        {
+          "param-id": "si-12.02_odp.02",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "this policy/process is under development and considers the sensitivity of PII, number of individuals and/or records in the research, testing or training"
+          ]
+        },
+        {
+          "param-id": "si-12.02_odp.03",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "this policy/process is under development and considers the sensitivity of PII, number of individuals and/or records in the research, testing or training"
+          ]
+        },
+        {
+          "param-id": "si-18_odp.01",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "as part of the PIA review process"
+          ]
+        },
+        {
+          "param-id": "si-18_odp.02",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "as part of the PIA review process"
+          ]
+        },
+        {
+          "param-id": "si-18_odp.03",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "as part of the PIA review process"
+          ]
+        },
+        {
+          "param-id": "si-18_odp.04",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "as part of the PIA review process"
+          ]
+        },
+        {
+          "param-id": "si-19_odp.01",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "PII and sensitive PII defined in: GSA PII Rules Matrix"
+          ]
+        },
+        {
+          "param-id": "si-19_odp.02",
+          "props": [
+            {
+              "name": "param-value-origin",
+              "value": "GSAIT"
+            }
+          ],
+          "values": [
+            "as part of the PIA review"
           ]
         }
       ],

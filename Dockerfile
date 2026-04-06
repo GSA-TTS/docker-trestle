@@ -38,6 +38,13 @@ RUN apt-get update && apt-get install -y git && apt-get clean
 RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
     python -m pip install -r requirements.txt
+
+# Patch compliance-trestle bug: ssp-assemble crashes when by_components is None
+# Upstream issue: https://github.com/oscal-compass/compliance-trestle/issues/2181
+# Remove this patch when upgrading to a version with the fix
+RUN sed -i 's/for i, by_comp in enumerate(imp_requirement.by_components):/for i, by_comp in enumerate(as_list(imp_requirement.by_components)):/' \
+    /usr/local/lib/python3.11/site-packages/trestle/core/commands/author/ssp.py
+
 RUN apt-get remove -y git
 
 # Switch to the non-privileged user to run the application.

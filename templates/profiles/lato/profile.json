@@ -262,7 +262,8 @@
           ]
         },
         {
-          "param-id": "au-2_prm_2"
+          "param-id": "au-2_prm_2",
+          "label": "organization-defined event types (subset of the event types defined in AU-2a.) along with the frequency of (or situation requiring) logging for each identified event type"
         },
         {
           "param-id": "au-06.01_odp",

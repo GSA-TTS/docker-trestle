@@ -5,7 +5,7 @@ if [ ! -d /app/docs ]; then
     exit 1
 fi
 
-cd /app/docs
+cd /app/docs || exit 1
 if [ ! -d /app/docs/.trestle ]; then
     trestle init --govdocs
 fi
